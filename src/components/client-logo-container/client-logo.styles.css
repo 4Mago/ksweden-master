@@ -1,0 +1,19 @@
+.carousel {
+    display: block;
+}
+@media screen and (min-width: 801px){
+    .client-container .carousel-phone {
+        display: none;
+    }
+    .client-container .carousel-desktop {
+       display: block;
+    }
+}
+@media screen and (max-width: 800px){
+    .client-container .carousel-phone {
+        display: block;
+    }
+    .client-container .carousel-desktop {
+       display:none;
+    }
+}
