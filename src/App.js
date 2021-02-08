@@ -178,7 +178,7 @@ useEffect(() => {
             path={'/'}
             exact
             >
-              <HomePage home={home} tjanster={tjanster} nyheter={nyheter} omOss={omOss} contact={contact} konsult={konsult} roller={roller} />
+              <HomePage erfarenhet={erfarenhet} home={home} tjanster={tjanster} nyheter={nyheter} omOss={omOss} contact={contact} konsult={konsult} roller={roller} />
             </Route>
             <Route
             path={'/erfarenhet/:artikelId'} 
