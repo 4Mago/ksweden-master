@@ -50,7 +50,7 @@ function App() {
     const homeQuery = `*[_type == "artikel" && slider] | order(datum desc) {
         thumbnail, titel
     }`
-    const contactQuery = `*[_type == "kontakt"]`
+    const contactQuery = `*[_type == "contact"]`
     const tjansterQuery = `*[_type == "artikel" && tjanster] | order(datum desc)
         {
             thumbnail, titel
