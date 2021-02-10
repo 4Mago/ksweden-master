@@ -12,14 +12,14 @@ const TjanstCont = styled.div`
     
 `
 
-const Tjanster = ({tjanster}) => {
+const Services = ({services}) => {
     
     return (
-        <TjanstCont id="tjanster">
+        <TjanstCont id="services">
             <Title title={'Våra tjänster'} />
-            <ArticleContainer articles={tjanster} />
+            <ArticleContainer services={services} />
         </TjanstCont>
     )
 }
 
-export default Tjanster
+export default Services

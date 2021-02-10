@@ -13,8 +13,6 @@ const Cont = styled.div`
 
 
 const Roller = ({roller}) => {
-    
-
     return (
         <Cont id="roller">
             <Title title="Våra Roller" />

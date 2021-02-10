@@ -72,13 +72,13 @@ const Overlay = styled.div`
     }
 `
 
-const HeaderImage = ({imageDeets}) => {
+const HeaderImage = ({slider}) => {
     return (
        
         <StyledHeaderImage>
-           <Thumbnail style={{backgroundImage:`url(${urlFor(imageDeets.thumbnail).url()})`}}/> 
+           <Thumbnail style={{backgroundImage:`url(${urlFor(slider.thumbnail).url()})`}}/> 
            <Overlay />
-           <Title>{imageDeets.titel}</Title>
+           <Title>{slider.heroText}</Title>
         </StyledHeaderImage>
         
     )

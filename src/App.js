@@ -3,27 +3,17 @@ import { Route, Switch, Link } from "react-router-dom"
 import "./App.css"
 import { ThemeProvider } from "styled-components"
 import { theme } from "./theme.styles"
-import Header from "./components/header/header.component"
-import Footer from "./components/footer/footer-component"
+import Header from "./components/header/header.component.jsx"
+import Footer from "./components/footer/footer-component.jsx"
 import sanityClient from "./Client"
 import styled from "styled-components"
 import CookieConsent from "react-cookie-consent"
 import ReactGA from "react-ga"
 
-const HomePage = lazy(() => import("./pages/home.component"))
-const ErfarenhetPage = lazy(() =>
-  import("./components/erfarenhet-extended/erfarenhet-extended.component")
-)
-const KonsultPage = lazy(() =>
-  import("./components/konsult-extended-phone/konsult-extended-phone.component")
-)
-const Terms = lazy(() => import("./pages/terms.component"))
+const HomePage = lazy(() => import("./pages/home.component.jsx"))
+const Terms = lazy(() => import("./pages/terms.component.jsx"))
 
 function App() {
-  const [home, setHome] = useState({
-    thumbnail: "",
-    titel: "",
-  })
   const [cookie, cookieTrigger] = useState(false)
   useEffect(() => {
     if (cookie) {
@@ -38,97 +28,94 @@ function App() {
       : cookieTrigger(false)
   }, [])
 
+  const [home, setHome] = useState('')
+  const [about, setAbout] = useState('')
   const [contact, setContact] = useState("")
-  const [tjanster, setTjanster] = useState("")
+  const [services, setServices] = useState("")
   const [roller, setRoller] = useState("")
   const [konsult, setKonsult] = useState([])
-  const [omOss, setOmOss] = useState("")
+
   const [nyheter, setNyheter] = useState("")
-  const [erfarenhet, setErfarenhet] = useState("")
+  const homeQuery = `*[_type == "slider"] | order(datum desc)`
 
+const contactQuery = `*[_type == "contact"]`
+
+const servicesQuery = `*[_type == "services"] | order(datum desc)
+    {
+        thumbnail, titel
+    }`
+const rollQuery = `*[_type == "team"]`
+
+const aboutQuery = `*[_type == "about"]
+`
+const uppdragQuery = `*[_type == "artikel" && nyhet] | order(datum desc)
+{
+    thumbnail, titel
+}`
+const konsultQuery = `*[_type == "konsult"] | order(namn asc)`
   useEffect(() => {
-    const homeQuery = `*[_type == "artikel" && slider] | order(datum desc) {
-        thumbnail, titel
-    }`
-    const contactQuery = `*[_type == "contact"]`
-    const tjansterQuery = `*[_type == "artikel" && tjanster] | order(datum desc)
-        {
-            thumbnail, titel
-        }`
-    const rollQuery = `*[_type == "roller"]`
-    const omOssQuery = `*[_type == "omOss"]`
-    const articleQuery = `*[_type == "artikel" && nyhet] | order(datum desc)
-    {
-        thumbnail, titel
-    }`
-    const erfarenhetQuery = `*[_type == "erfarenhet"] | order(datum desc)
-    {
-        thumbnail, titel
-    }`
-    const konsultQuery = `*[_type == "konsult"] | order(namn asc)`
 
-    sanityClient.fetch(homeQuery).then((home) => {
+    sanityClient.fetch(homeQuery).then((homeResult) => {
       const homeArray = []
-      home.forEach((home) => {
-        homeArray.push(home)
+      homeResult.forEach((homeItem) => {
+        homeArray.push(homeItem)
       })
       setHome(homeArray)
     })
-
-    sanityClient.fetch(contactQuery).then((contact) => {
-      contact.forEach((contact) => {
-        setContact(contact)
+    sanityClient.fetch(aboutQuery).then((aboutResult) => {
+      const aboutArray = []
+      aboutResult.forEach((aboutItem) => {
+        aboutArray.push(aboutItem)
       })
+      setAbout(aboutArray)
     })
 
-    const tjansterArray = []
+     sanityClient.fetch(contactQuery).then((contact) => {
+       const contactArray = []
+       contact.forEach((contact) => {
+         setContact(contact)
+       })
+     })
 
-    sanityClient.fetch(tjansterQuery).then((article) => {
-      article.forEach((article) => {
-        tjansterArray.push(article)
-      })
-      setTjanster(tjansterArray)
-    })
+     const servicesArray = []
 
-    sanityClient.fetch(rollQuery).then((roller) => {
-      roller.forEach((roll) => {
-        setRoller(roll)
-      })
-    })
+     sanityClient.fetch(servicesQuery).then((services) => {
+       services.forEach((services) => {
+         servicesArray.push(services)
+       })
+       setServices(servicesArray)
+     })
 
-    sanityClient.fetch(omOssQuery).then((omOss) => {
-      omOss.forEach((omOss) => {
-        setOmOss(omOss)
-      })
-    })
+  //   sanityClient.fetch(rollQuery).then((roller) => {
+  //     roller.forEach((roll) => {
+  //       setRoller(roll)
+  //     })
+  //   })
 
-    const articleArray = []
+ 
 
-    sanityClient.fetch(articleQuery).then((article) => {
-      article.forEach((article) => {
-        articleArray.push(article)
-      })
-      setNyheter(articleArray)
-    })
+  //   const uppdragArray = []
 
-    const erfarenhetArray = []
+  //   sanityClient.fetch(uppdragQuery).then((uppdrag) => {
+  //     uppdrag.forEach((uppdrag) => {
+  //       uppdragArray.push(uppdrag)
+  //     })
+  //     setNyheter(uppdragArray)
+  //   })
 
-    sanityClient.fetch(erfarenhetQuery).then((article) => {
-      article.forEach((article) => {
-        erfarenhetArray.push(article)
-      })
-      setErfarenhet(erfarenhetArray)
-    })
-
-    const konsultArray = []
-    sanityClient.fetch(konsultQuery).then((konsult) => {
-      konsult.forEach((konsult) => {
-        konsultArray.push(konsult)
-      })
-      setKonsult(konsultArray)
-    })
-    return
+  //   const konsultArray = []
+  //   sanityClient.fetch(konsultQuery).then((konsult) => {
+  //     konsult.forEach((konsult) => {
+  //       konsultArray.push(konsult)
+  //     })
+  //     setKonsult(konsultArray)
+  //   })
+  //   return
   }, [])
+
+  // const [loading, setLoading] = useState(false)
+  // setLoading(true)
+  // setLoading(false)
 
   const Fallback = styled.div`
     display: flex;
@@ -169,19 +156,19 @@ function App() {
           <Switch>
             <Route path={"/"} exact>
               <HomePage
-                tjanster={tjanster}
-                omOss={omOss}
-                erfarenhet={erfarenhet}
+                // services={services}
+                about={about}
                 home={home}
-                nyheter={nyheter}
-                contact={contact}
-                konsult={konsult}
-                roller={roller}
+                // contact={contact}
+                // nyheter={nyheter}
+                // contact={contact}
+                // konsult={konsult}
+                // roller={roller}
               />
             </Route>
-            <Route path={"/erfarenhet/:artikelId"} component={ErfarenhetPage} />
+            {/* <Route path={"/erfarenhet/:artikelId"} component={ErfarenhetPage} />
             <Route path={"/konsult/:artikelId"} component={KonsultPage} />
-            <Route path={"/integritets-policy"} component={Terms} />
+            <Route path={"/integritets-policy"} component={Terms} /> */}
           </Switch>
         </Suspense>
         <Footer />

@@ -9,7 +9,7 @@ const builder = imageUrlBuilder(sanityClient)
 function urlFor(source) {
   return builder.image(source)
 }
-const OmOssCont = styled.div`
+const AboutCont = styled.div`
   width: 100%;
   height: auto;
   margin-top: 125px;
@@ -31,7 +31,7 @@ const ImageCont = styled.div`
   align-items: center;
 `
 
-const OmOssTitle = styled.h1`
+const AboutTitle = styled.h1`
   font-size: 64px;
   width: 400px;
   max-width: 80%;
@@ -51,44 +51,20 @@ const Desc = styled(PortableText)`
   max-width: 800px;
 `
 
-const SecondDesc = styled(PortableText)`
-  width: 100%;
-
-  column-count: 2;
-  margin-top: 0;
-  & p:nth-child(1) {
-    margin-top: 0;
-  }
-  @media screen and (max-width: 600px) {
-    column-count: 1;
-  }
-`
-const SecondTitle = styled.h4``
-const FaktaDiv = styled.div`
-  width: 100%;
-  max-width: 800px;
-  background: #e9f4fa;
-  padding: 5px 10px;
-  box-sizing: border-box;
-`
-
-const OmOss = ({ omOss }) => {
-  console.log(omOss)
+const About = ({ about }) => {
+  console.log(about.description)
+  console.log(about.text)
 
   return (
-    <OmOssCont id="om-oss">
+    <AboutCont>
       <Title title="Om oss" />
       <ImageCont>
-        <Image src={urlFor(omOss.bild).url()} />
+        <Image src={urlFor(about.image).url()} />
       </ImageCont>
-      <OmOssTitle>{omOss.titel}</OmOssTitle>
-      <Desc blocks={omOss.beskrivning} />
-      <FaktaDiv>
-        <SecondTitle>{omOss.andraTitel}</SecondTitle>
-        <SecondDesc blocks={omOss.beskrivning2} />
-      </FaktaDiv>
-    </OmOssCont>
+      <AboutTitle>{about.title}</AboutTitle>
+      <Desc blocks={about.description} />
+    </AboutCont>
   )
 }
 
-export default OmOss
+export default About

@@ -24,9 +24,8 @@ transition: transform 0.3s ease-in-out;
   width: 100%;
   padding: 0;
 }
-
-}
 `
+
 const NavLink = styled(Link)`
 
   font-size: 1rem;
@@ -50,7 +49,7 @@ const NavLink = styled(Link)`
   }
 `
 
-const Menu = ({ open, header, setOpen }) => {
+const Menu = ({ open, navigation, setOpen }) => {
 
   const scrollWithOffset = (el, offset) => {
     const elementPosition = el.offsetTop - offset
@@ -64,7 +63,7 @@ const Menu = ({ open, header, setOpen }) => {
     return (
         <StyledMenu open={open}>
             <div style={{height: "3rem"}}></div>
-            {header ? header.meny.map(item => <NavLink scroll={el => scrollWithOffset(el, 85)} to={`/#${item.link}`} smooth onClick={() => setOpen(!open)} key={item._key}>{item.name}</NavLink>): null}
+            {navigation ? navigation.menu.map(item => <NavLink scroll={el => scrollWithOffset(el, 85)} to={`/#${item.link}`} smooth onClick={() => setOpen(!open)} key={item._key}>{item.name}</NavLink>): null}
         </StyledMenu>
     )
 }

@@ -43,7 +43,7 @@ const Header = () => {
         <HeaderCont ref={node}>
           <Burger open={open} setOpen={setOpen} />
           <Menu header={header} open={open} setOpen={setOpen} />
-          <Logo logo={header.logga} setOpen={setOpen} />
+          <Logo logo={header.logo} setOpen={setOpen} />
         </HeaderCont>
     )
 }

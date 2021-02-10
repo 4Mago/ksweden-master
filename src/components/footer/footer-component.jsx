@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {Link } from 'react-router-dom'
 const FooterCont = styled.div`
-    width 100%;
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;

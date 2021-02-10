@@ -4,14 +4,11 @@ import styled from "styled-components"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from "react-responsive-carousel"
 import ClientContainer from "../components/client-logo-container/client-logo-container.component"
-import Tjanster from "./tjanster.component"
-import Konsult from "./konsulter.component"
-import OmOss from "./OmOss.component"
-import Roller from "./roller.component"
-import Erfarenhet from "./erfarenhet.component"
+import Services from "./tjanster.component"
+import About from "./about.component"
 import Contact from "./contact.component"
-import Nyheter from "./nyheter.component"
 import ReactGA from "react-ga"
+
 
 const HomeCarousel = styled(Carousel)`
   height: 100vh;
@@ -49,16 +46,10 @@ const PageContainer = styled.div`
   padding: 0 8%;
 `
 
-const Home = ({
-  konsult,
-  home,
-  roller,
-  tjanster,
-  nyheter,
-  contact,
-  omOss,
-  erfarenhet,
-}) => {
+const AboutDiv = styled.div``
+
+const Home = ({ home, about }) => {
+
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search)
   }, [])
@@ -71,24 +62,28 @@ const Home = ({
     showStatus: false,
     transitionTime: 1000,
   }
+
   return (
     <HomeContainer id="home">
       {home.length > 0 ? (
         <HomeCarousel {...settings}>
-          {home.map((homeImage, id) => (
-            <HeaderImage key={id} imageDeets={homeImage} />
+          
+          {home.map((homeItem, idx) => (
+            <HeaderImage key={idx} slider={homeItem} />
           ))}
         </HomeCarousel>
       ) : null}
-      <PageContainer>
         <ClientContainer />
-        <Nyheter nyheter={nyheter} />
-        <OmOss omOss={omOss} />
-        <Tjanster tjanster={tjanster} />
-        <Roller roller={roller} />
-        <Erfarenhet erfarenhet={erfarenhet} />
-        <Konsult konsult={konsult} />
-        <Contact contact={contact} />
+       <PageContainer>
+         {/* <AboutDiv>
+         {about.map((aboutItem, idx) => (
+         <About key={idx} about={aboutItem} />
+         )
+         )}
+         </AboutDiv> */}
+       
+        {/* <Tjanster services={services} />
+        <Contact contact={contact} /> */}
       </PageContainer>
     </HomeContainer>
   )

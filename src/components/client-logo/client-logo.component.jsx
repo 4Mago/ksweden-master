@@ -21,13 +21,13 @@ const LogoCont = styled.div`
     width: 80%;
     justify-content: center;
     align-items: center;
-    margin 0 15%;
+    margin: 0 15%;
 `
 
-const ClientLogo = ({client}) => {
+const ClientLogo = ({navigation}) => {
     return (
         <LogoCont>
-             <StyledLogo src={urlFor(client.logga).url()}/>
+             <StyledLogo src={urlFor(navigation.logga).url()}/>
         </LogoCont>
     )
 }
