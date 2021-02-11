@@ -28,33 +28,27 @@ function App() {
       : cookieTrigger(false)
   }, [])
 
-  const [home, setHome] = useState('')
-  const [about, setAbout] = useState('')
-  const [contact, setContact] = useState("")
+  const [home, setHome] = useState("")
+  const [about, setAbout] = useState("")
   const [services, setServices] = useState("")
-  const [roller, setRoller] = useState("")
-  const [konsult, setKonsult] = useState([])
+  const [contact, setContact] = useState("")
 
-  const [nyheter, setNyheter] = useState("")
   const homeQuery = `*[_type == "slider"] | order(datum desc)`
 
-const contactQuery = `*[_type == "contact"]`
+  const contactQuery = `*[_type == "contact"]`
 
-const servicesQuery = `*[_type == "services"] | order(datum desc)
-    {
-        thumbnail, titel
-    }`
-const rollQuery = `*[_type == "team"]`
+  const servicesQuery = `*[_type == "services"] | order(datum desc)`
 
-const aboutQuery = `*[_type == "about"]
-`
-const uppdragQuery = `*[_type == "artikel" && nyhet] | order(datum desc)
+  const teamQuery = `*[_type == "team"]`
+
+  const aboutQuery = `*[_type == "about"]`
+
+  const uppdragQuery = `*[_type == ""] | order(datum desc)
 {
     thumbnail, titel
 }`
-const konsultQuery = `*[_type == "konsult"] | order(namn asc)`
-  useEffect(() => {
 
+  useEffect(() => {
     sanityClient.fetch(homeQuery).then((homeResult) => {
       const homeArray = []
       homeResult.forEach((homeItem) => {
@@ -62,6 +56,7 @@ const konsultQuery = `*[_type == "konsult"] | order(namn asc)`
       })
       setHome(homeArray)
     })
+
     sanityClient.fetch(aboutQuery).then((aboutResult) => {
       const aboutArray = []
       aboutResult.forEach((aboutItem) => {
@@ -70,47 +65,45 @@ const konsultQuery = `*[_type == "konsult"] | order(namn asc)`
       setAbout(aboutArray)
     })
 
-     sanityClient.fetch(contactQuery).then((contact) => {
-       const contactArray = []
-       contact.forEach((contact) => {
-         setContact(contact)
-       })
-     })
+    sanityClient.fetch(contactQuery).then((contactResult) => {
+      const contactArray = []
+      contactResult.forEach((contactItem) => {
+        contactArray.push(contactItem)
+      })
+      setContact(contactArray)
+    })
 
-     const servicesArray = []
+    sanityClient.fetch(servicesQuery).then((servicesResult) => {
+      const servicesArray = []
+      servicesResult.forEach((servicesItem) => {
+        servicesArray.push(servicesItem)
+      })
+      setServices(servicesArray)
+    })
 
-     sanityClient.fetch(servicesQuery).then((services) => {
-       services.forEach((services) => {
-         servicesArray.push(services)
-       })
-       setServices(servicesArray)
-     })
+    //   sanityClient.fetch(rollQuery).then((roller) => {
+    //     roller.forEach((roll) => {
+    //       setRoller(roll)
+    //     })
+    //   })
 
-  //   sanityClient.fetch(rollQuery).then((roller) => {
-  //     roller.forEach((roll) => {
-  //       setRoller(roll)
-  //     })
-  //   })
+    //   const uppdragArray = []
 
- 
+    //   sanityClient.fetch(uppdragQuery).then((uppdrag) => {
+    //     uppdrag.forEach((uppdrag) => {
+    //       uppdragArray.push(uppdrag)
+    //     })
+    //     setNyheter(uppdragArray)
+    //   })
 
-  //   const uppdragArray = []
-
-  //   sanityClient.fetch(uppdragQuery).then((uppdrag) => {
-  //     uppdrag.forEach((uppdrag) => {
-  //       uppdragArray.push(uppdrag)
-  //     })
-  //     setNyheter(uppdragArray)
-  //   })
-
-  //   const konsultArray = []
-  //   sanityClient.fetch(konsultQuery).then((konsult) => {
-  //     konsult.forEach((konsult) => {
-  //       konsultArray.push(konsult)
-  //     })
-  //     setKonsult(konsultArray)
-  //   })
-  //   return
+    //   const konsultArray = []
+    //   sanityClient.fetch(konsultQuery).then((konsult) => {
+    //     konsult.forEach((konsult) => {
+    //       konsultArray.push(konsult)
+    //     })
+    //     setKonsult(konsultArray)
+    //   })
+    //   return
   }, [])
 
   // const [loading, setLoading] = useState(false)
@@ -156,10 +149,10 @@ const konsultQuery = `*[_type == "konsult"] | order(namn asc)`
           <Switch>
             <Route path={"/"} exact>
               <HomePage
-                // services={services}
-                about={about}
+                services={services}
                 home={home}
-                // contact={contact}
+                about={about}
+                contact={contact}
                 // nyheter={nyheter}
                 // contact={contact}
                 // konsult={konsult}
@@ -167,8 +160,8 @@ const konsultQuery = `*[_type == "konsult"] | order(namn asc)`
               />
             </Route>
             {/* <Route path={"/erfarenhet/:artikelId"} component={ErfarenhetPage} />
-            <Route path={"/konsult/:artikelId"} component={KonsultPage} />
-            <Route path={"/integritets-policy"} component={Terms} /> */}
+            <Route path={"/konsult/:artikelId"} component={KonsultPage} />*/}
+            <Route path={"/integritets-policy"} component={Terms} />
           </Switch>
         </Suspense>
         <Footer />

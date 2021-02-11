@@ -9,7 +9,6 @@ import About from "./about.component"
 import Contact from "./contact.component"
 import ReactGA from "react-ga"
 
-
 const HomeCarousel = styled(Carousel)`
   height: 100vh;
   width: 100%;
@@ -38,7 +37,7 @@ const HomeContainer = styled.div`
     background: none;
   }
 `
-
+const AboutImage = styled.img``
 const PageContainer = styled.div`
   height: auto;
   width: 100%;
@@ -46,10 +45,7 @@ const PageContainer = styled.div`
   padding: 0 8%;
 `
 
-const AboutDiv = styled.div``
-
-const Home = ({ home, about }) => {
-
+const Home = ({ home, about, services, contact }) => {
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search)
   }, [])
@@ -64,28 +60,23 @@ const Home = ({ home, about }) => {
   }
 
   return (
-    <HomeContainer id="home">
-      {home.length > 0 ? (
-        <HomeCarousel {...settings}>
-          
-          {home.map((homeItem, idx) => (
-            <HeaderImage key={idx} slider={homeItem} />
-          ))}
-        </HomeCarousel>
-      ) : null}
-        <ClientContainer />
-       <PageContainer>
-         {/* <AboutDiv>
-         {about.map((aboutItem, idx) => (
-         <About key={idx} about={aboutItem} />
-         )
-         )}
-         </AboutDiv> */}
-       
-        {/* <Tjanster services={services} />
-        <Contact contact={contact} /> */}
+    <>
+      <HomeContainer id="home">
+        {home.length > 0 ? (
+          <HomeCarousel {...settings}>
+            {home.map((homeItem, idx) => (
+              <HeaderImage key={idx} slider={homeItem} />
+            ))}
+          </HomeCarousel>
+        ) : null}
+      </HomeContainer>
+      <ClientContainer />
+      <PageContainer>
+        <About about={about} />
+        <Services services={services} />
+        <Contact contact={contact} />
       </PageContainer>
-    </HomeContainer>
+    </>
   )
 }
 

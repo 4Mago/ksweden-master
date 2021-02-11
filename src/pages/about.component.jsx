@@ -52,9 +52,7 @@ const Desc = styled(PortableText)`
 `
 
 const About = ({ about }) => {
-  console.log(about.description)
-  console.log(about.text)
-
+  console.log(about)
   return (
     <AboutCont>
       <Title title="Om oss" />
