@@ -30,6 +30,7 @@ const ImageCont = styled.div`
   justify-content: center;
   align-items: center;
 `
+const AboutContainer = styled.div``
 
 const AboutTitle = styled.h1`
   font-size: 64px;
@@ -52,15 +53,23 @@ const Desc = styled(PortableText)`
 `
 
 const About = ({ about }) => {
-  console.log(about)
   return (
     <AboutCont>
-      <Title title="Om oss" />
-      <ImageCont>
-        <Image src={urlFor(about.image).url()} />
-      </ImageCont>
-      <AboutTitle>{about.title}</AboutTitle>
-      <Desc blocks={about.description} />
+  {about.length > 0 ? (
+      about.map((aboutItem, idx) => (
+        <AboutContainer key={idx}>
+        <Title title="Om oss" />
+        <ImageCont>
+          <Image src={urlFor(aboutItem.image).url()} />
+        </ImageCont>
+        <AboutTitle>{aboutItem.title}</AboutTitle>
+        <Desc blocks={aboutItem.description} />
+        </AboutContainer>
+      ))
+      
+
+  ) : null}
+      
     </AboutCont>
   )
 }

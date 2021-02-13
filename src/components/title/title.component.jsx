@@ -16,7 +16,6 @@ const TitleText = styled.h2`
 `
 
 const Title = ({ title }) => {
-  console.log(title)
   return (
     <TitleCont>
       <TitleText>{title}</TitleText>

@@ -76,6 +76,7 @@ function App() {
     sanityClient.fetch(servicesQuery).then((servicesResult) => {
       const servicesArray = []
       servicesResult.forEach((servicesItem) => {
+        console.log(servicesItem)
         servicesArray.push(servicesItem)
       })
       setServices(servicesArray)

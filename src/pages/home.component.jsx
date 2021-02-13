@@ -4,7 +4,7 @@ import styled from "styled-components"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from "react-responsive-carousel"
 import ClientContainer from "../components/client-logo-container/client-logo-container.component"
-import Services from "./tjanster.component"
+import Services from "./services.component"
 import About from "./about.component"
 import Contact from "./contact.component"
 import ReactGA from "react-ga"
@@ -37,7 +37,10 @@ const HomeContainer = styled.div`
     background: none;
   }
 `
+
+const AboutContainer = styled.div``
 const AboutImage = styled.img``
+
 const PageContainer = styled.div`
   height: auto;
   width: 100%;
@@ -72,7 +75,7 @@ const Home = ({ home, about, services, contact }) => {
       </HomeContainer>
       <ClientContainer />
       <PageContainer>
-        <About about={about} />
+      <About about={about} />
         <Services services={services} />
         <Contact contact={contact} />
       </PageContainer>
