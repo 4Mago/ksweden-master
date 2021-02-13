@@ -38,9 +38,6 @@ const HomeContainer = styled.div`
   }
 `
 
-const AboutContainer = styled.div``
-const AboutImage = styled.img``
-
 const PageContainer = styled.div`
   height: auto;
   width: 100%;
