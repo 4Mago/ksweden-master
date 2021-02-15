@@ -37,7 +37,7 @@ const HomeContainer = styled.div`
     background: none;
   }
 `
-
+const AboutImage = styled.img``
 const PageContainer = styled.div`
   height: auto;
   width: 100%;
@@ -72,8 +72,8 @@ const Home = ({ home, about, services, contact }) => {
       </HomeContainer>
       <ClientContainer />
       <PageContainer>
-      <About about={about} />
         <Services services={services} />
+        <About about={about} />
         <Contact contact={contact} />
       </PageContainer>
     </>

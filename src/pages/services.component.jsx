@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 import imageUrlBuilder from "@sanity/image-url"
 import sanityClient from "../Client"
 import PortableText from "@sanity/block-content-to-react"
@@ -10,11 +10,19 @@ function urlFor(source) {
 }
 
 const TjanstCont = styled.div`
-    margin-top: 100px;
-    text-align: left;
-    margin-bottom: 100px;
-    position:relative;
-    height: auto;   
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+  box-sizing: border-box;
+  padding: 2.5% 0;
+  text-align: start;
+  text-decoration: none;
+  @media only screen and (max-width: 840px) {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    padding: 2.5% 0;
+  }
 `
 
 const Title = styled.h2`
@@ -26,28 +34,30 @@ const Title = styled.h2`
 `
 
 const ServicesImage = styled.img`
-width: 100%;
-height: 350px;
-object-fit: cover;`
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+`
 
 const Desc = styled(PortableText)`
   width: 100%;
   max-width: 800px;
 `
-const Services = ({services}) => {
-    console.log(services)
-    return (
-        <TjanstCont id="services">
-            {services.length ? (
-                services.map((servicesItem, idx) => (
-                    <div key={idx}>
-                        <ServicesImage src={urlFor(servicesItem.thumbnail).url()} />
-                        <Title>{servicesItem.title}</Title>
-                        <Desc blocks={servicesItem.description} />
-                    </div>
-                ))) : null }
+const Services = ({ services }) => {
+  console.log(services)
+  return (
+    <TjanstCont id="services">
+      {services.length
+        ? services.map((servicesItem, idx) => (
+            <div key={idx}>
+              <ServicesImage src={urlFor(servicesItem.thumbnail).url()} />
+              <Title>{servicesItem.title}</Title>
+              <Desc blocks={servicesItem.description} />
+            </div>
+          ))
+        : null}
     </TjanstCont>
-    )
+  )
 }
 
 export default Services

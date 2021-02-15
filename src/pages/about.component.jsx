@@ -10,20 +10,16 @@ function urlFor(source) {
   return builder.image(source)
 }
 const AboutCont = styled.div`
-  width: 100%;
-  height: auto;
-  margin-top: 125px;
+  margin-top: 100px;
   text-align: left;
-  box-sizing: border-box;
-
   margin-bottom: 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: column;
 `
 
-const Image = styled.img`
-  width: 100%;
-  height: auto;
-  max-width: 1000px;
-`
+const Image = styled.img``
 const ImageCont = styled.div`
   width: 100%;
   display: flex;
@@ -33,7 +29,7 @@ const ImageCont = styled.div`
 const AboutContainer = styled.div``
 
 const AboutTitle = styled.h1`
-  font-size: 64px;
+  font-size: 42px;
   width: 400px;
   max-width: 80%;
   line-height: 0.9em;
@@ -55,21 +51,16 @@ const Desc = styled(PortableText)`
 const About = ({ about }) => {
   return (
     <AboutCont>
-  {about.length > 0 ? (
-      about.map((aboutItem, idx) => (
-        <AboutContainer key={idx}>
-        <Title title="Om oss" />
-        <ImageCont>
-          <Image src={urlFor(aboutItem.image).url()} />
-        </ImageCont>
-        <AboutTitle>{aboutItem.title}</AboutTitle>
-        <Desc blocks={aboutItem.description} />
-        </AboutContainer>
-      ))
-      
-
-  ) : null}
-      
+      {about.length > 0
+        ? about.map((aboutItem, idx) => (
+            <AboutContainer key={idx}>
+              <ImageCont>
+                <Image src={urlFor(aboutItem.image).url()} />
+              </ImageCont>
+              <Desc blocks={aboutItem.description} />
+            </AboutContainer>
+          ))
+        : null}
     </AboutCont>
   )
 }
