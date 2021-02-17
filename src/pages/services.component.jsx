@@ -26,8 +26,9 @@ const TjanstCont = styled.div`
 `
 
 const Title = styled.h2`
-  font-size: 64px;
-  margin-bottom: 2%;
+  font-size: 38px;
+  padding: 0 5px;
+  margin: 0;
   @media screen and (max-width: 800px) {
     font-size: 36px;
   }
@@ -35,7 +36,7 @@ const Title = styled.h2`
 
 const ServicesImage = styled.img`
   width: 100%;
-  height: 350px;
+  height: 280px;
   object-fit: cover;
 `
 

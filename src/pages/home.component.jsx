@@ -27,6 +27,9 @@ const HomeCarousel = styled(Carousel)`
   @media only screen and (max-width: 800px) {
     height: 70vh;
   }
+  .h1 {
+    width: 65%;
+  }
 `
 const HomeContainer = styled.div`
   position: relative;
@@ -52,7 +55,7 @@ const Home = ({ home, about, services, contact, team }) => {
   const settings = {
     autoPlay: true,
     stopOnHover: false,
-    interval: 5000,
+    interval: 6000,
     showThumbs: false,
     infiniteLoop: true,
     showStatus: false,

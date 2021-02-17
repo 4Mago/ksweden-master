@@ -3,12 +3,12 @@ import sanityClient from "../Client"
 import styled from "styled-components"
 import imageUrlBuilder from "@sanity/image-url"
 import PortableText from "@sanity/block-content-to-react"
-import Title from "../components/title/title.component"
 
 const builder = imageUrlBuilder(sanityClient)
 function urlFor(source) {
   return builder.image(source)
 }
+
 const AboutCont = styled.div`
   margin-top: 100px;
   text-align: left;
@@ -20,8 +20,9 @@ const AboutCont = styled.div`
 `
 
 const Image = styled.img`
-  height: 300px;
-  width: auto;
+  width: 100%;
+  height: auto;
+  min-height: 55vh;
 `
 
 const ImageCont = styled.div`
@@ -30,16 +31,18 @@ const ImageCont = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 `
 const AboutContainer = styled.div``
 
 const AboutTitle = styled.h1`
   font-size: 42px;
-  width: 400px;
+  width: 800px;
   max-width: 80%;
   line-height: 0.9em;
   @media screen and (max-width: 800px) {
     font-size: 36px;
+    width: 400px;
   }
   @media screen and (max-width: 500px) {
     font-size: 28px;
@@ -62,6 +65,7 @@ const About = ({ about }) => {
               <ImageCont>
                 <Image src={urlFor(aboutItem.image).url()} />
               </ImageCont>
+              <AboutTitle>{aboutItem.title}</AboutTitle>
               <Desc blocks={aboutItem.description} />
             </AboutContainer>
           ))
