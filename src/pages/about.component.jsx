@@ -19,9 +19,14 @@ const AboutCont = styled.div`
   flex-flow: column;
 `
 
-const Image = styled.img``
+const Image = styled.img`
+  height: 300px;
+  width: auto;
+`
+
 const ImageCont = styled.div`
   width: 100%;
+  height: 350px;
   display: flex;
   justify-content: center;
   align-items: center;

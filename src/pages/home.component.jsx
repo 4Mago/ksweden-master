@@ -45,7 +45,7 @@ const PageContainer = styled.div`
   padding: 0 8%;
 `
 
-const Home = ({ home, about, services, contact }) => {
+const Home = ({ home, about, services, contact, team }) => {
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search)
   }, [])
@@ -58,7 +58,7 @@ const Home = ({ home, about, services, contact }) => {
     showStatus: false,
     transitionTime: 1000,
   }
-
+  console.log(team)
   return (
     <>
       <HomeContainer id="home">
@@ -74,7 +74,7 @@ const Home = ({ home, about, services, contact }) => {
       <PageContainer>
         <Services services={services} />
         <About about={about} />
-        <Contact contact={contact} />
+        <Contact contact={contact} team={team} />
       </PageContainer>
     </>
   )

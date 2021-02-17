@@ -1,6 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 import PortableText from "@sanity/block-content-to-react"
+import imageUrlBuilder from "@sanity/image-url"
+import sanityClient from "../Client"
+
+const builder = imageUrlBuilder(sanityClient)
+function urlFor(source) {
+  return builder.image(source)
+}
 
 const ContactCont = styled.div`
   min-height: 50vh;
@@ -29,6 +36,9 @@ const ContactTitle = styled.h2`
     font-size: 32px;
   }
 `
+
+const Desc = styled.p``
+
 const ContactText = styled.h3``
 const ContactTextCont = styled.div`
   width: 50%;
@@ -37,8 +47,19 @@ const ContactTextCont = styled.div`
     width: 100%;
   }
 `
+
+const ImageCont = styled.div`
+  display: flex;
+  flex-flow: row;
+`
+const Image = styled.img`
+  width: 150px;
+  height: 200px;
+`
+
 const MapCont = styled.div`
   width: 50%;
+  display: flex;
   @media screen and (max-width: 900px) {
     width: 100%;
   }
@@ -54,6 +75,9 @@ const ContactLink = styled.a`
   text-decoration: none;
   color: black;
 `
+const Text = styled.p`
+  height: 15px;
+`
 
 const ContactContainer = styled.div`
   height: auto;
@@ -65,48 +89,48 @@ const Span = styled.div`
   background: #1e3d78;
 `
 
-const Contact = ({ contact }) => {
+const Contact = ({ contact, team }) => {
   console.log(contact)
   return (
     <ContactContainer id="kontakt">
-      <ContactTitle>{contact.title}</ContactTitle>
+      <ContactTitle>{contact.text}</ContactTitle>
       <Span />
-      <ContactCont>
-        <ContactTextCont>
-          <ContactText>
-            <PortableText blocks={contact.beskrivning} />
-          </ContactText>
-          <ContactTele>
-            Telefon:{" "}
-            <ContactLink href={`tel:${contact.telefon}`}>
-              {contact.telefon}
-            </ContactLink>{" "}
-          </ContactTele>
-          <ContactTele>
-            Email:{" "}
-            <ContactLink href={`mailto:${contact.email}`}>
-              {contact.email}
-            </ContactLink>{" "}
-          </ContactTele>
-        </ContactTextCont>
-
-        <MapCont>
-          <iframe
-            title="maps"
-            width="100%"
-            height="350"
-            src="https://maps.google.com/maps?width=100%&amp;height=400&amp;hl=en&amp;q=Sveav%C3%A4gen%2020%2C%20111%2057%2C%20Stockholm%2C%20Sweden+(Passacon)&amp;ie=UTF8&amp;t=&amp;z=17&amp;iwloc=B&amp;output=embed"
-            frameBorder="0"
-            scrolling="no"
-            marginHeight="0"
-            marginWidth="0"
-          >
-            <a href="https://www.maps.ie/coordinates.html">
-              find my coordinates
-            </a>
-          </iframe>
-        </MapCont>
-      </ContactCont>
+      {contact.length > 0
+        ? contact.map((contactItem, id) => (
+            <ContactCont key={id}>
+              <ContactTextCont>
+                <ContactText>
+                  <PortableText>{contactItem.text}</PortableText>
+                </ContactText>
+                <ContactTele>
+                  Telefon:{" "}
+                  <ContactLink href={`tel:${contactItem.phone}`}>
+                    {contactItem.phone}
+                  </ContactLink>
+                </ContactTele>
+                <ContactTele>
+                  Email:{" "}
+                  <ContactLink href={`mailto:${contactItem.email}`}>
+                    {contactItem.email}
+                  </ContactLink>{" "}
+                </ContactTele>
+              </ContactTextCont>
+              <MapCont>
+                {team.length > 0
+                  ? team.map((teamItem, id) => (
+                      <ContactContainer key={id}>
+                        <ImageCont>
+                          <Image src={urlFor(teamItem.image).url()} />
+                        </ImageCont>
+                        <Text> Telefon: {teamItem.phone} </Text>
+                        <Text> Email: {teamItem.email} </Text>
+                      </ContactContainer>
+                    ))
+                  : null}
+              </MapCont>
+            </ContactCont>
+          ))
+        : null}
       <Span />
     </ContactContainer>
   )

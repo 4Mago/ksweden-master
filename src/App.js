@@ -32,10 +32,11 @@ function App() {
   const [about, setAbout] = useState("")
   const [services, setServices] = useState("")
   const [contact, setContact] = useState("")
+  const [team, setTeam] = useState("")
 
   const homeQuery = `*[_type == "slider"] | order(datum desc)`
 
-  const contactQuery = `*[_type == "contact"]`
+  const contactQuery = `*[_type == "contakt"]`
 
   const servicesQuery = `*[_type == "services"] | order(datum desc)`
 
@@ -76,10 +77,17 @@ function App() {
     sanityClient.fetch(servicesQuery).then((servicesResult) => {
       const servicesArray = []
       servicesResult.forEach((servicesItem) => {
-        console.log(servicesItem)
         servicesArray.push(servicesItem)
       })
       setServices(servicesArray)
+    })
+
+    sanityClient.fetch(teamQuery).then((teamResult) => {
+      const teamArray = []
+      teamResult.forEach((teamItem) => {
+        teamArray.push(teamItem)
+      })
+      setTeam(teamArray)
     })
 
     //   sanityClient.fetch(rollQuery).then((roller) => {
@@ -154,14 +162,9 @@ function App() {
                 home={home}
                 about={about}
                 contact={contact}
-                // nyheter={nyheter}
-                // contact={contact}
-                // konsult={konsult}
-                // roller={roller}
+                team={team}
               />
             </Route>
-            {/* <Route path={"/erfarenhet/:artikelId"} component={ErfarenhetPage} />
-            <Route path={"/konsult/:artikelId"} component={KonsultPage} />*/}
             <Route path={"/integritets-policy"} component={Terms} />
           </Switch>
         </Suspense>
