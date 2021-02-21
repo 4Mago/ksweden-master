@@ -27,7 +27,7 @@ const TjanstCont = styled.div`
 
 const Title = styled.h2`
   font-size: 38px;
-  padding: 0 5px;
+  padding: 4px 0;
   margin: 0;
   @media screen and (max-width: 800px) {
     font-size: 36px;
@@ -36,14 +36,29 @@ const Title = styled.h2`
 
 const ServicesImage = styled.img`
   width: 100%;
-  height: 280px;
+  max-height: 220px;
   object-fit: cover;
+  height: 100%;
 `
 
 const Desc = styled(PortableText)`
-  width: 100%;
+  width: 95%;
   max-width: 800px;
+  height: 95px;
+  padding: 0;
+  overflow: hidden;
 `
+
+const DescDiv = styled.div`
+  height: 100px;
+  width: 100%;
+  z-index: 9;
+`
+
+const DescText = styled.p`
+  height: 75px;
+`
+
 const Services = ({ services }) => {
   console.log(services)
   return (

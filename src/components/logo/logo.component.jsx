@@ -20,7 +20,7 @@ const StyledLogo = styled.img`
   }
 `
 
-const Logo = ({ logo, setOpen }) => {
+const Logo = ({ navigation, setOpen }) => {
   return (
     <Link
       onClick={() => {
@@ -33,7 +33,7 @@ const Logo = ({ logo, setOpen }) => {
       }}
       to="/"
     >
-      <StyledLogo src={urlFor(logo).url()} />
+      <StyledLogo src={urlFor(navigation.logo).url()} />
     </Link>
   )
 }

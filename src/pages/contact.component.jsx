@@ -90,7 +90,6 @@ const Span = styled.div`
 `
 
 const Contact = ({ contact, team }) => {
-  console.log(contact)
   return (
     <ContactContainer id="kontakt">
       <ContactTitle>{contact.text}</ContactTitle>
@@ -100,19 +99,10 @@ const Contact = ({ contact, team }) => {
             <ContactCont key={id}>
               <ContactTextCont>
                 <ContactText>
-                  <PortableText>{contactItem.text}</PortableText>
+                  <PortableText>{contactItem.description}</PortableText>
                 </ContactText>
                 <ContactTele>
-                  Telefon:{" "}
-                  <ContactLink href={`tel:${contactItem.phone}`}>
-                    {contactItem.phone}
-                  </ContactLink>
-                </ContactTele>
-                <ContactTele>
-                  Email:{" "}
-                  <ContactLink href={`mailto:${contactItem.email}`}>
-                    {contactItem.email}
-                  </ContactLink>{" "}
+                  <PortableText>{contactItem.text}</PortableText>
                 </ContactTele>
               </ContactTextCont>
               <MapCont>

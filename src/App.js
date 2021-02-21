@@ -33,6 +33,7 @@ function App() {
   const [services, setServices] = useState("")
   const [contact, setContact] = useState("")
   const [team, setTeam] = useState("")
+  const [circlePage, setCirclePage] = useState("")
 
   const homeQuery = `*[_type == "slider"] | order(datum desc)`
 
@@ -163,6 +164,7 @@ function App() {
                 about={about}
                 contact={contact}
                 team={team}
+                circlePage={circlePage}
               />
             </Route>
             <Route path={"/integritets-policy"} component={Terms} />
