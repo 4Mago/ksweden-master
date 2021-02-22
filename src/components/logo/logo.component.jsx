@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import sanityClient from "../../Client"
 import imageUrlBuilder from "@sanity/image-url"
@@ -8,19 +8,34 @@ const builder = imageUrlBuilder(sanityClient)
 function urlFor(source) {
   return builder.image(source)
 }
+
 const StyledLogo = styled.img`
   width: 200px;
   height: auto;
   position: absolute;
   top: 15vh;
-  left: 45%;
+  left: 43%;
   z-index: 100;
   @media screen and (max-width: 800px) {
     width: 150px;
   }
 `
 
-const Logo = ({ navigation, setOpen }) => {
+const Logo = ({ setOpen }) => {
+  const [logo, setLogo] = useState("")
+
+  useEffect(() => {
+    const logoQuery = `*[_type == "navigation"]`
+
+    sanityClient.fetch(logoQuery).then((logo) => {
+      logo.forEach((logo) => {
+        setLogo(logo)
+      })
+    })
+
+    return
+  }, [])
+
   return (
     <Link
       onClick={() => {
@@ -33,7 +48,7 @@ const Logo = ({ navigation, setOpen }) => {
       }}
       to="/"
     >
-      <StyledLogo src={urlFor(navigation.logo).url()} />
+      <StyledLogo src={urlFor(logo.logo).url()} />
     </Link>
   )
 }

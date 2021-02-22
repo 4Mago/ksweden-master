@@ -3,12 +3,12 @@ import Burger from "../burger/burger.component"
 import Menu from "../menu/menu.component"
 import { useOnClickOutside } from "../../hooks"
 import sanityClient from "../../Client"
+import Logo from "../logo/logo.component"
 import styled from "styled-components"
 
 const HeaderCont = styled.div`
   width: 100%;
   height: 65px;
-  position: fixed;
   z-index: 99999;
   background: rgba(255, 255, 255, 0.8);
   display: flex;
@@ -20,7 +20,7 @@ const HeaderCont = styled.div`
 const Header = () => {
   const [open, setOpen] = useState(false)
   const [header, setHeader] = useState({
-    menu: [],
+    meny: [],
     logga: "",
   })
   const node = useRef()
@@ -41,6 +41,7 @@ const Header = () => {
     <HeaderCont ref={node}>
       <Burger open={open} setOpen={setOpen} />
       <Menu header={header} open={open} setOpen={setOpen} />
+      <Logo logo={header.logo} setOpen={setOpen} />
     </HeaderCont>
   )
 }
