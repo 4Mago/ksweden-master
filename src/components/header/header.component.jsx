@@ -10,6 +10,7 @@ const HeaderCont = styled.div`
   width: 100%;
   height: 65px;
   z-index: 99999;
+  position: absolute;
   background: rgba(255, 255, 255, 0.8);
   display: flex;
   justify-content: flex-start;
