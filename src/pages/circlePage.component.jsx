@@ -42,9 +42,15 @@ const Circle = styled.div`
   height: 550px;
   width: 550px;
   left: 29vw;
-  border-radius: 700px;
+  border-radius: 550px;
   background: #fff5f5;
   z-index: -1;
+
+  @media screen and (max-width: 1100px) {
+    /* height: 300px;
+    width: 300px;
+    border-radius: 300px; */
+  }
 `
 const AboutContainer = styled.div`
   display: flex;

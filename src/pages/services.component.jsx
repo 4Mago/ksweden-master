@@ -16,7 +16,7 @@ const TjanstCont = styled.div`
   grid-gap: 1em;
   box-sizing: border-box;
   padding: 2.5% 0;
-  text-align: start;
+  text-align: center;
   text-decoration: none;
   @media only screen and (max-width: 840px) {
     grid-template-columns: 1fr;
@@ -27,7 +27,7 @@ const TjanstCont = styled.div`
 
 const Title = styled.h2`
   font-size: 38px;
-  padding: 4px 0;
+  padding: 12px 0;
   margin: 0;
   @media screen and (max-width: 800px) {
     font-size: 36px;
@@ -44,31 +44,46 @@ const ServicesImage = styled.img`
 const Desc = styled(PortableText)`
   width: 95%;
   max-width: 800px;
-  height: 95px;
+  height: 120px;
   padding: 0;
   overflow: hidden;
 `
 
 const DescDiv = styled.div`
-  height: 100px;
+  height: 120px;
   width: 100%;
   z-index: 9;
+  background-image: linear-gradient(to bottom, transparent, white);
+  position: relative;
+  bottom: 85px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
 `
 
-const DescText = styled.p`
-  height: 75px;
+const DescText = styled.a`
+  border: solid black;
+  background-color: white;
+  border-radius: 8px;
+  padding: 5px 7px;
+  cursor: pointer;
 `
 
 const Services = ({ services }) => {
-  console.log(services)
   return (
     <TjanstCont id="services">
       {services.length
         ? services.map((servicesItem, idx) => (
             <div key={idx}>
-              <ServicesImage src={urlFor(servicesItem.thumbnail).url()} />
               <Title>{servicesItem.title}</Title>
+              <ServicesImage src={urlFor(servicesItem.thumbnail).url()} />
               <Desc blocks={servicesItem.description} />
+              <DescDiv>
+                <DescText>Läs mer</DescText>
+              </DescDiv>
             </div>
           ))
         : null}
