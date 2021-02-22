@@ -19,10 +19,7 @@ const HeaderCont = styled.div`
 
 const Header = () => {
   const [open, setOpen] = useState(false)
-  const [header, setHeader] = useState({
-    meny: [],
-    logga: "",
-  })
+  const [header, setHeader] = useState("")
   const node = useRef()
   useOnClickOutside(node, () => setOpen(false))
   useEffect(() => {
@@ -36,7 +33,7 @@ const Header = () => {
 
     return
   }, [])
-
+  console.log(header)
   return (
     <HeaderCont ref={node}>
       <Burger open={open} setOpen={setOpen} />

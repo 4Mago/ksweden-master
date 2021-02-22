@@ -57,7 +57,7 @@ const Menu = ({ open, navigation, setOpen }) => {
       behavior: "smooth",
     })
   }
-
+  console.log(navigation)
   return (
     <StyledMenu open={open}>
       <div style={{ height: "3rem" }}></div>
