@@ -77,7 +77,7 @@ const Home = ({ home, about, services, contact, team }) => {
       </HomeContainer>
       <ClientContainer />
       <PageContainer>
-        <CirclePage about={about[0]} />
+        <CirclePage about={about[1]} />
         <Services services={services} />
         <About about={about} />
         <Contact contact={contact} team={team} />

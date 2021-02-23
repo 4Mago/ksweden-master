@@ -8,9 +8,9 @@ const CirclePage = ({ about }) => {
   return (
     <>
       <Circle />
-      <AboutTitle>{about.title}</AboutTitle>
       <AboutCont>
         <AboutContainer>
+          <AboutTitle>{about.title}</AboutTitle>
           <Desc blocks={about.description} />
         </AboutContainer>
         <ImageCont>
@@ -34,37 +34,67 @@ const AboutCont = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding-bottom: 10vh;
+  padding-bottom: 30vh;
   position: relative;
+
+  @media screen and (max-width: 800px) {
+    flex-flow: column;
+  }
 `
 const Circle = styled.div`
   position: absolute;
-  height: 550px;
-  width: 550px;
-  left: 29vw;
+  height: 860px;
+  width: 860px;
+  left: 20vw;
+  top: 130vh;
   border-radius: 550px;
   background: #fff5f5;
   z-index: -1;
 
-  @media screen and (max-width: 1100px) {
-    /* height: 300px;
-    width: 300px;
-    border-radius: 300px; */
+  @media screen and (max-width: 1200px) {
+    height: 800px;
+    width: 800px;
+    border-radius: 800px;
+    left: 15vw;
+  }
+  @media screen and (max-width: 1000px) {
+    height: 800px;
+    width: 800px;
+    border-radius: 800px;
+    left: 5%;
+  }
+  @media screen and (max-width: 800px) {
+    height: 600px;
+    width: 600px;
+    top: auto;
+    border-radius: 800px;
+    left: 8vw;
   }
 `
 const AboutContainer = styled.div`
   display: flex;
   flex-flow: column;
-  width: 400px;
+  width: 700px;
+  text-align: left;
+
+  @media screen and (max-width: 1200px) {
+    width: 500px;
+  }
 `
 const ImageCont = styled.div`
-  width: 400px;
-  border-radius: 400px;
-  height: 400px;
+  width: 450px;
+  border-radius: 450px;
+  height: 450px;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+
+  @media screen and (max-width: 1000px) {
+    width: 350px;
+    border-radius: 350px;
+    height: 350px;
+  }
 `
 
 const Image = styled.img`
@@ -73,10 +103,18 @@ const Image = styled.img`
   height: 100%;
 `
 const AboutTitle = styled.h2`
-  font-size: 42px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 48px;
+  line-height: 50px;
+  width: 450px;
+
+  @media screen and (min-width: 1200px) {
+    font-size: 64px;
+    line-height: 50px;
+    width: 600px;
+  }
 `
 const Desc = styled(PortableText)`
-  text-align: center;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 19px;
 `

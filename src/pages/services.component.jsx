@@ -26,8 +26,8 @@ const TjanstCont = styled.div`
 `
 
 const Title = styled.h2`
-  font-size: 38px;
-  padding: 12px 0;
+  font-size: 44px;
+  padding: 13px 0;
   margin: 0;
   @media screen and (max-width: 800px) {
     font-size: 36px;
@@ -39,7 +39,7 @@ const ServicesImage = styled.img`
   max-height: 220px;
   object-fit: cover;
   height: 100%;
-  border-radius: 14px;
+  border-radius: 4.4px;
 `
 
 const Desc = styled(PortableText)`
