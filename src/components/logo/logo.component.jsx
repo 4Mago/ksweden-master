@@ -10,12 +10,13 @@ function urlFor(source) {
 }
 
 const StyledLogo = styled.img`
-  width: 200px;
+  width: 300px;
   height: auto;
   position: absolute;
   top: 15vh;
-  left: 43%;
+  left: 40%;
   z-index: 100;
+  cursor: default;
   @media screen and (max-width: 800px) {
     width: 150px;
   }

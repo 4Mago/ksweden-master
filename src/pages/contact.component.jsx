@@ -17,7 +17,6 @@ const ContactCont = styled.div`
   text-align: left;
   display: flex;
   justify-content: space-between;
-
   padding: 5%;
   box-sizing: border-box;
   align-items: flex-start;
@@ -37,9 +36,9 @@ const ContactTitle = styled.h2`
   }
 `
 
-const Desc = styled.p``
-
-const ContactText = styled.h3``
+const ContactText = styled(PortableText)`
+  width: 95%;
+`
 const ContactTextCont = styled.div`
   width: 50%;
   margin-bottom: 50px;
@@ -90,17 +89,15 @@ const Span = styled.div`
 `
 
 const Contact = ({ contact, team }) => {
+  console.log(contact)
   return (
     <ContactContainer id="kontakt">
-      <ContactTitle>{contact.text}</ContactTitle>
       <Span />
       {contact.length > 0
         ? contact.map((contactItem, id) => (
             <ContactCont key={id}>
               <ContactTextCont>
-                <ContactText>
-                  <PortableText>{contactItem.description}</PortableText>
-                </ContactText>
+                <ContactText blocks={contactItem.text} />
                 <ContactTele>
                   <PortableText>{contactItem.text}</PortableText>
                 </ContactTele>

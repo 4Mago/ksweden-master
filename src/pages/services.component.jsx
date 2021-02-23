@@ -35,10 +35,11 @@ const Title = styled.h2`
 `
 
 const ServicesImage = styled.img`
-  width: 100%;
+  width: 95%;
   max-height: 220px;
   object-fit: cover;
   height: 100%;
+  border-radius: 14px;
 `
 
 const Desc = styled(PortableText)`
@@ -66,6 +67,7 @@ const DescDiv = styled.div`
 
 const DescText = styled.a`
   border: solid black;
+  border-width: 1px;
   background-color: white;
   border-radius: 8px;
   padding: 5px 7px;

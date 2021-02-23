@@ -14,9 +14,8 @@ import "./client-logo.styles.css"
 
 const StyledContainer = styled.div`
   width: 80%;
-
-  height: 30vh;
-  margin: 35px 10% 5px 10%;
+  height: 25vh;
+  margin: 35px 5% 0px 10%;
   @media screen and (max-width: 800px) {
     width: 70%;
     margin: 15px 15% 5px 15%;

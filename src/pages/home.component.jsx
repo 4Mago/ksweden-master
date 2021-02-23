@@ -13,6 +13,7 @@ import CirclePage from "./circlePage.component"
 const HomeCarousel = styled(Carousel)`
   height: 100vh;
   width: 100%;
+  font-size: 40px;
   ul {
     padding: 0;
   }
@@ -50,7 +51,7 @@ const PageContainer = styled.div`
   line-height: 24px;
 `
 
-const Home = ({ home, about, services, contact, team, circlePage }) => {
+const Home = ({ home, about, services, contact, team }) => {
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search)
   }, [])
@@ -63,7 +64,6 @@ const Home = ({ home, about, services, contact, team, circlePage }) => {
     showStatus: false,
     transitionTime: 1000,
   }
-  console.log(team)
   return (
     <>
       <HomeContainer id="home">
@@ -75,6 +75,7 @@ const Home = ({ home, about, services, contact, team, circlePage }) => {
           </HomeCarousel>
         ) : null}
       </HomeContainer>
+      <ClientContainer />
       <PageContainer>
         <CirclePage about={about[0]} />
         <Services services={services} />

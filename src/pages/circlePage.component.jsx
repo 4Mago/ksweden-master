@@ -34,7 +34,7 @@ const AboutCont = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding-bottom: 30vh;
+  padding-bottom: 10vh;
   position: relative;
 `
 const Circle = styled.div`
@@ -73,7 +73,7 @@ const Image = styled.img`
   height: 100%;
 `
 const AboutTitle = styled.h2`
-  font-size: 30px;
+  font-size: 42px;
 `
 const Desc = styled(PortableText)`
   text-align: center;
