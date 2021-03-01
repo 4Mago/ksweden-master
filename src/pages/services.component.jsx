@@ -25,6 +25,19 @@ const TjanstCont = styled.div`
     padding: 2.5% 0;
   }
 `
+const TitleCont = styled.div`
+  width: 100%;
+  text-align: left;
+  margin-bottom: 55px;
+`
+
+const TitleText = styled.h2`
+  font-size: 64px;
+  margin-bottom: 2%;
+  @media screen and (max-width: 800px) {
+    font-size: 36px;
+  }
+`
 
 const ItemContainer = styled.div`
   display: flex;
@@ -76,6 +89,11 @@ const Desc = styled(PortableText)`
   position: relative;
   z-index: 1;
   transition: all 0.2s ease-in-out;
+
+  ul {
+    padding-left: 0;
+    list-style-position: inside;
+  }
 `
 
 const Overlay = styled.div`
@@ -122,7 +140,7 @@ const Services = ({ services }) => {
     document.getElementById(`content` + idx).style.cssText =
       "top: 0; height: 350px"
     document.getElementById(`overlay` + idx).style.cssText =
-      "background-color: white; opacity: 0.6; z-index: 0;"
+      "background-color: white; opacity: 0.85; z-index: 0;"
     document.getElementById("image" + idx).style.cssText = "height: 350px;"
     document.getElementById("readmore" + idx).style.cssText = "display: none;"
     document.getElementById("readless" + idx).style.cssText = "display: block;"
@@ -139,31 +157,36 @@ const Services = ({ services }) => {
   }
 
   return (
-    <TjanstCont id="services">
-      {services.length
-        ? services.map((servicesItem, idx) => (
-            <ItemContainer key={idx}>
-              <Title>{servicesItem.title}</Title>
-              <ReadMoreContainer id={"readMore" + idx}>
-                <ServicesImage
-                  id={"image" + idx}
-                  src={urlFor(servicesItem.thumbnail).url()}
-                />
-                <ContDesc id={`content` + idx}>
-                  <Overlay id={`overlay` + idx} />
-                  <Desc blocks={servicesItem.description} />
-                </ContDesc>
-              </ReadMoreContainer>
-              <DescText id={"readmore" + idx} onClick={() => readMore(idx)}>
-                Läs mer
-              </DescText>
-              <DescText2 id={"readless" + idx} onClick={() => readLess(idx)}>
-                Läs mindre
-              </DescText2>
-            </ItemContainer>
-          ))
-        : null}
-    </TjanstCont>
+    <>
+      <TitleCont>
+        <TitleText>Våra Tjänster</TitleText>
+      </TitleCont>
+      <TjanstCont id="services">
+        {services.length
+          ? services.map((servicesItem, idx) => (
+              <ItemContainer key={idx}>
+                <Title>{servicesItem.title}</Title>
+                <ReadMoreContainer id={"readMore" + idx}>
+                  <ServicesImage
+                    id={"image" + idx}
+                    src={urlFor(servicesItem.thumbnail).url()}
+                  />
+                  <ContDesc id={`content` + idx}>
+                    <Overlay id={`overlay` + idx} />
+                    <Desc blocks={servicesItem.description} />
+                  </ContDesc>
+                </ReadMoreContainer>
+                <DescText id={"readmore" + idx} onClick={() => readMore(idx)}>
+                  Läs mer
+                </DescText>
+                <DescText2 id={"readless" + idx} onClick={() => readLess(idx)}>
+                  ᕙ(`▿´)ᕗ
+                </DescText2>
+              </ItemContainer>
+            ))
+          : null}
+      </TjanstCont>
+    </>
   )
 }
 
