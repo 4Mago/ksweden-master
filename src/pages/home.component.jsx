@@ -51,7 +51,7 @@ const PageContainer = styled.div`
   line-height: 24px;
 `
 
-const Home = ({ home, about, services, contact, team }) => {
+const Home = ({ home, about, services, contact, team, circlePage }) => {
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search)
   }, [])
@@ -77,7 +77,7 @@ const Home = ({ home, about, services, contact, team }) => {
       </HomeContainer>
       <ClientContainer />
       <PageContainer>
-        <CirclePage about={about[1]} />
+        <CirclePage about={circlePage} />
         <Services services={services} />
         <About about={about} />
         <Contact contact={contact} team={team} />

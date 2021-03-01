@@ -1,5 +1,5 @@
-import React from "react"
-import styled from "styled-components"
+import React, { useRef } from "react"
+import styled, { css } from "styled-components"
 import imageUrlBuilder from "@sanity/image-url"
 import sanityClient from "../Client"
 import PortableText from "@sanity/block-content-to-react"
@@ -13,7 +13,8 @@ const TjanstCont = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 1em;
+  margin-top: 5%;
+  grid-gap: 2em;
   box-sizing: border-box;
   padding: 2.5% 0;
   text-align: center;
@@ -25,9 +26,17 @@ const TjanstCont = styled.div`
   }
 `
 
+const ItemContainer = styled.div`
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+`
+
 const Title = styled.h2`
-  font-size: 44px;
-  padding: 13px 0;
+  font-size: 33px;
+  padding: 15px 0;
   margin: 0;
   @media screen and (max-width: 800px) {
     font-size: 36px;
@@ -35,34 +44,49 @@ const Title = styled.h2`
 `
 
 const ServicesImage = styled.img`
-  width: 95%;
-  max-height: 220px;
+  width: 90%;
+
   object-fit: cover;
-  height: 100%;
+  height: 220px;
+
+  transition: all 0.5s ease-in-out;
   border-radius: 4.4px;
 `
 
-const Desc = styled(PortableText)`
-  width: 95%;
-  max-width: 800px;
+const ContDesc = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   height: 120px;
-  padding: 0;
+  flex-flow: column;
+  position: absolute;
+  top: 220;
+  margin-bottom: 10px;
   overflow: hidden;
+  transition: all 0.5s ease-in-out;
 `
 
-const DescDiv = styled.div`
-  height: 120px;
+const Desc = styled(PortableText)`
   width: 100%;
+  max-width: 800px;
+  box-sizing: border-box;
+  padding: 0 10%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  transition: all 0.2s ease-in-out;
+`
+
+const Overlay = styled.div`
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   z-index: 9;
   background-image: linear-gradient(to bottom, transparent, white);
-  position: relative;
-  bottom: 85px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
+  position: absolute;
+  pointer-events: none;
 `
 
 const DescText = styled.a`
@@ -73,20 +97,70 @@ const DescText = styled.a`
   padding: 5px 7px;
   cursor: pointer;
 `
+const DescText2 = styled.a`
+  border: solid black;
+  border-width: 1px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 5px 7px;
+  cursor: pointer;
+  display: none;
+`
+
+const ReadMoreContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: auto;
+  transition: all 0.2s ease-in-out;
+  min-height: 350px;
+`
 
 const Services = ({ services }) => {
+  // contDesc.style.overflow = 'default'
+  // overlay.style.background = 'transparent'
+  const readMore = (idx) => {
+    document.getElementById(`content` + idx).style.cssText =
+      "top: 0; height: 350px"
+    document.getElementById(`overlay` + idx).style.cssText =
+      "background-color: white; opacity: 0.6; z-index: 0;"
+    document.getElementById("image" + idx).style.cssText = "height: 350px;"
+    document.getElementById("readmore" + idx).style.cssText = "display: none;"
+    document.getElementById("readless" + idx).style.cssText = "display: block;"
+  }
+
+  const readLess = (idx) => {
+    document.getElementById(`content` + idx).style.cssText =
+      "top: 220px; height: 120px"
+    document.getElementById(`overlay` + idx).style.cssText =
+      "background-color: linear-gradient(to bottom, transparent, white);"
+    document.getElementById("image" + idx).style.cssText = "height: 220px;"
+    document.getElementById("readmore" + idx).style.cssText = "display: block;"
+    document.getElementById("readless" + idx).style.cssText = "display: none;"
+  }
+
   return (
     <TjanstCont id="services">
       {services.length
         ? services.map((servicesItem, idx) => (
-            <div key={idx}>
+            <ItemContainer key={idx}>
               <Title>{servicesItem.title}</Title>
-              <ServicesImage src={urlFor(servicesItem.thumbnail).url()} />
-              <Desc blocks={servicesItem.description} />
-              <DescDiv>
-                <DescText>Läs mer</DescText>
-              </DescDiv>
-            </div>
+              <ReadMoreContainer id={"readMore" + idx}>
+                <ServicesImage
+                  id={"image" + idx}
+                  src={urlFor(servicesItem.thumbnail).url()}
+                />
+                <ContDesc id={`content` + idx}>
+                  <Overlay id={`overlay` + idx} />
+                  <Desc blocks={servicesItem.description} />
+                </ContDesc>
+              </ReadMoreContainer>
+              <DescText id={"readmore" + idx} onClick={() => readMore(idx)}>
+                Läs mer
+              </DescText>
+              <DescText2 id={"readless" + idx} onClick={() => readLess(idx)}>
+                Läs mindre
+              </DescText2>
+            </ItemContainer>
           ))
         : null}
     </TjanstCont>

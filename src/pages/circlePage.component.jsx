@@ -47,9 +47,10 @@ const Circle = styled.div`
   width: 860px;
   left: 20vw;
   top: 130vh;
-  border-radius: 550px;
+  border-radius: 860px;
   background: #fff5f5;
   z-index: -1;
+  overflow: hidden;
 
   @media screen and (max-width: 1200px) {
     height: 800px;
@@ -70,21 +71,34 @@ const Circle = styled.div`
     border-radius: 800px;
     left: 8vw;
   }
+  @media screen and (max-width: 600px) {
+    height: 600px;
+    width: 600px;
+    top: auto;
+    border-radius: 800px;
+    right: 8vw;
+  }
 `
 const AboutContainer = styled.div`
   display: flex;
   flex-flow: column;
-  width: 700px;
+  width: 600px;
   text-align: left;
 
+  @media screen and (min-width: 1400px) {
+    width: 700px;
+  }
   @media screen and (max-width: 1200px) {
     width: 500px;
   }
+  @media screen and (max-width: 1000px) {
+    width: 400px;
+  }
 `
 const ImageCont = styled.div`
-  width: 450px;
-  border-radius: 450px;
-  height: 450px;
+  width: 550px !important;
+  border-radius: 550px;
+  height: 550px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,14 +121,21 @@ const AboutTitle = styled.h2`
   font-size: 48px;
   line-height: 50px;
   width: 450px;
+  margin-bottom: 0;
 
   @media screen and (min-width: 1200px) {
     font-size: 64px;
-    line-height: 50px;
+    line-height: 60px;
     width: 600px;
+    padding: 0;
   }
 `
 const Desc = styled(PortableText)`
   font-size: 16px;
   line-height: 19px;
+  padding: 0 15px 0 0;
+
+  @media screen and (max-width: 600px) {
+    padding: 0 15px;
+  }
 `

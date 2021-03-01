@@ -9,6 +9,7 @@ import sanityClient from "./Client"
 import styled from "styled-components"
 import CookieConsent from "react-cookie-consent"
 import ReactGA from "react-ga"
+import CirclePage from "./pages/circlePage.component"
 
 const HomePage = lazy(() => import("./pages/home.component.jsx"))
 const Terms = lazy(() => import("./pages/terms.component.jsx"))
@@ -62,7 +63,11 @@ function App() {
     sanityClient.fetch(aboutQuery).then((aboutResult) => {
       const aboutArray = []
       aboutResult.forEach((aboutItem) => {
-        aboutArray.push(aboutItem)
+        if (aboutItem.prio && !circlePage.length) {
+          setCirclePage(aboutItem)
+        } else {
+          aboutArray.push(aboutItem)
+        }
       })
       setAbout(aboutArray)
     })
