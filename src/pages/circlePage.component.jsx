@@ -4,9 +4,9 @@ import styled from "styled-components"
 import imageUrlBuilder from "@sanity/image-url"
 import PortableText from "@sanity/block-content-to-react"
 
-const CirclePage = ({ about }) => {
+const CirclePage = ({ about, color }) => {
   return (
-    <>
+    <ContCont>
       <Circle />
       <AboutCont>
         <AboutContainer>
@@ -17,7 +17,7 @@ const CirclePage = ({ about }) => {
           <Image src={urlFor(about.image).url()} />
         </ImageCont>
       </AboutCont>
-    </>
+    </ContCont>
   )
 }
 
@@ -28,75 +28,107 @@ function urlFor(source) {
   return builder.image(source)
 }
 
+const ContCont = styled.div`
+  position: relative;
+`
+
 const AboutCont = styled.div`
-  height: 75vh;
+
+  height: auto;
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding-bottom: 30vh;
+  margin-bottom: 20vh;
   position: relative;
-
+  
+  @media screen and (max-width: 1300px) {
+    margin-top: 20vh;
+    margin-bottom: 30vh;
+  }
   @media screen and (max-width: 800px) {
     flex-flow: column;
+    justify-content: center;
+    margin-top: 20vh;
+    margin-bottom: 30vh;
   }
 `
 const Circle = styled.div`
   position: absolute;
   height: 860px;
   width: 860px;
-  left: 20vw;
-  top: 130vh;
+  left: 50%;
+  top: 46%;
+  transform: translate(-50%, -50%);
   border-radius: 860px;
   background: #fff5f5;
   z-index: -1;
   overflow: hidden;
+  transform: 1s ease;
 
   @media screen and (max-width: 1200px) {
     height: 800px;
     width: 800px;
     border-radius: 800px;
-    left: 15vw;
+    top: 34%;
   }
-  @media screen and (max-width: 1000px) {
-    height: 800px;
-    width: 800px;
+  @media screen and (max-width: 1025px) {
+    height: 700px;
+    width: 700px;
     border-radius: 800px;
-    left: 5%;
+    top: 34%;
   }
   @media screen and (max-width: 800px) {
     height: 600px;
     width: 600px;
     top: auto;
     border-radius: 800px;
-    left: 8vw;
+  }
+  @media screen and (max-width: 799px) {
+    top: 46%;
   }
   @media screen and (max-width: 600px) {
-    height: 600px;
-    width: 600px;
+    height: 650px;
+    width: 650px;
     top: auto;
-    border-radius: 800px;
-    right: 8vw;
+    border-radius: 700px;
+    top: 44%;
+  }
+  @media screen and (max-width: 400px) {
+    height: 580px;
+    width: 580px;
+    top: auto;
+    border-radius: 500px;
+    top: 52%;
   }
 `
 const AboutContainer = styled.div`
   display: flex;
   flex-flow: column;
-  width: 600px;
+  width: 50%;
   text-align: left;
+  z-index: 9;
 
   @media screen and (min-width: 1400px) {
     width: 700px;
+    padding: 0 2% 0 0;
   }
   @media screen and (max-width: 1200px) {
-    width: 500px;
+    width: 450px;
+    
   }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1025px) {
     width: 400px;
+  }
+  @media screen and (max-width: 800px) {
+    width: auto;
+  }
+  @media screen and (max-width: 500px) {
+    padding-left: 20px;
   }
 `
 const ImageCont = styled.div`
-  width: 550px !important;
+  width: 50%;
   border-radius: 550px;
   height: 550px;
   display: flex;
@@ -104,10 +136,29 @@ const ImageCont = styled.div`
   align-items: center;
   overflow: hidden;
 
-  @media screen and (max-width: 1000px) {
-    width: 350px;
+  @media screen and (max-width: 1200px) {
+    width: 450px;
     border-radius: 350px;
+    height: 450px;
+    align-items: flex-start;
+    position: relative;
+    bottom: 120px;
+  }
+  @media screen and (max-width: 1025px) {
+    width: 350px;
+    border-radius: auto;
     height: 350px;
+  }
+  @media screen and (max-width: 800px) {
+    height: 550px;
+
+    width: auto;
+    border-radius: 100%;
+    height: auto;
+    top: 50px;
+  }
+  @media screen and (max-width: 500px) {
+  display: none;
   }
 `
 
@@ -129,6 +180,13 @@ const AboutTitle = styled.h2`
     width: 600px;
     padding: 0;
   }
+  @media screen and (max-width: 500px) {
+    text-align: center;
+    padding-bottom: 8px;
+    font-size: 32px;
+    line-height: 32px;
+    width: 300px;
+  }
 `
 const Desc = styled(PortableText)`
   font-size: 16px;
@@ -136,6 +194,8 @@ const Desc = styled(PortableText)`
   padding: 0 15px 0 0;
 
   @media screen and (max-width: 600px) {
+    font-size: 15px;
+    line-height: 16px;
     padding: 0 15px;
   }
 `

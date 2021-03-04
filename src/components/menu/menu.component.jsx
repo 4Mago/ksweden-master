@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+import sanityClient from "../../Client"
 import styled from "styled-components"
 import { bool } from "prop-types"
 import { HashLink as Link } from "react-router-hash-link"
@@ -12,7 +13,7 @@ const StyledMenu = styled.nav`
   transform: ${({ open }) => (open ? "translate(0)" : "translate(-100%)")};
   text-align: left;
   padding: 3rem 6rem;
-  position: absolute;
+  position: fixed;
   min-width: 300px;
   z-index: 99;
   top: 0;
@@ -32,7 +33,7 @@ const NavLink = styled(Link)`
   padding: 0.5rem 0;
   font-weight: bold;
   letter-spacing: 0.5rem;
-  color: black;
+  color: white;
   text-decoration: none;
   transition: color 0.1s linear;
   cursor: pointer;
@@ -48,29 +49,38 @@ const NavLink = styled(Link)`
   }
 `
 
-const Menu = ({ open, navigation, setOpen }) => {
+const Menu = ({ open, setOpen }) => {
+  const [navigation, setNavigation] = useState("")
+
+  useEffect(() => {
+    const navigationQuery = `*[_type == "navigation"]`
+
+    sanityClient.fetch(navigationQuery).then((navigation) => {
+      navigation.forEach((navigation) => {
+        setNavigation(navigation)
+      })
+    })
+
+    return
+  }, [])
+
+  
   const scrollWithOffset = (el, offset) => {
     const elementPosition = el.offsetTop - offset
     window.scroll({
       top: elementPosition,
       left: 0,
-      behavior: "smooth",
-    })
-  }
-  console.log(navigation)
+      behavior: "smooth"
+    })}
+  
+  
   return (
     <StyledMenu open={open}>
-      <div style={{ height: "3rem" }}></div>
+      <div style={{ height: "1rem" }}></div>
       {navigation
-        ? navigation.menu.map((item) => (
-            <NavLink
-              scroll={(el) => scrollWithOffset(el, 85)}
-              to={`/#${item.link}`}
-              smooth
-              onClick={() => setOpen(!open)}
-              key={item._key}
-            >
-              {item.name}
+        ? navigation.menu.map((item, id) => (
+            <NavLink id={id} scroll={el => scrollWithOffset(el, 85)} to={`/#${item.link}`} smooth onClick={() => setOpen(!open)} key={item._key}>
+              {item.link}
             </NavLink>
           ))
         : null}

@@ -17,12 +17,20 @@ const AboutCont = styled.div`
   justify-content: flex-start;
   align-items: center;
   flex-flow: column;
+
+  @media screen and (max-width: 500px) {
+    min-height: auto;
+  }
 `
 
 const Image = styled.img`
   width: 100%;
   height: auto;
   min-height: 55vh;
+
+  @media screen and (max-width: 800px) {
+    min-height: auto;
+  }
 `
 
 const ImageCont = styled.div`
@@ -40,6 +48,8 @@ const AboutTitle = styled.h1`
   width: 800px;
   max-width: 80%;
   line-height: 0.9em;
+  padding: 0 2%;
+
   @media screen and (max-width: 800px) {
     font-size: 36px;
     width: 400px;
@@ -54,11 +64,15 @@ const AboutTitle = styled.h1`
 const Desc = styled(PortableText)`
   width: 100%;
   max-width: 800px;
+  padding: 0 2%;
+  @media screen and (max-width: 400px) {
+    font-size: 14px;
+  }
 `
 
 const About = ({ about }) => {
   return (
-    <AboutCont>
+    <AboutCont id="Om oss">
       {about.length > 0
         ? about.map((aboutItem, idx) => (
             <AboutContainer key={idx}>

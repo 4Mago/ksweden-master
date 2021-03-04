@@ -13,10 +13,14 @@ const StyledLogo = styled.img`
   width: 300px;
   height: auto;
   position: absolute;
-  top: 15vh;
-  left: 40%;
+  top: 25vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 100;
   cursor: default;
+  @media screen and (max-width: 1300px) {
+    width: 265px;
+  }
   @media screen and (max-width: 800px) {
     width: 150px;
   }
