@@ -39,6 +39,9 @@ const Contact = ({ contact, team }) => {
                 <ContactText blocks={contactItem.text} />
                 <ContactTele>
                   <PortableText>{contactItem.text}</PortableText>
+                  <a href="https://www.linkedin.com/company/2868236?trk=tyah&trkInfo=tarId:1411567075903,tas:passacon,idx:1-1-1">
+                    <img alt="linkedin" src="/linked.svg" />
+                  </a>
                 </ContactTele>
               </ContactTextCont>
               <MapCont>
