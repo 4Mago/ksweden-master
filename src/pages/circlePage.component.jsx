@@ -1,13 +1,27 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import sanityClient from "../Client"
 import styled from "styled-components"
 import imageUrlBuilder from "@sanity/image-url"
 import PortableText from "@sanity/block-content-to-react"
 
-const CirclePage = ({ about, color }) => {
+const CirclePage = ({ about }) => {
+  const [color, setColor] = useState("")
+
+  useEffect(() => {
+    const colorQuery = `*[_type == "colorScheme"]`
+
+    sanityClient.fetch(colorQuery).then((color) => {
+      color.forEach((color) => {
+        setColor(color)
+      })
+    })
+
+    return
+  }, [])
+
   return (
     <ContCont>
-      <Circle />
+      <Circle style={{ backgroundColor: `${color.mainColor.hex}` }} />
       <AboutCont>
         <AboutContainer>
           <AboutTitle>{about.title}</AboutTitle>
@@ -33,7 +47,6 @@ const ContCont = styled.div`
 `
 
 const AboutCont = styled.div`
-
   height: auto;
   width: 100%;
   display: flex;
@@ -41,7 +54,7 @@ const AboutCont = styled.div`
   align-items: center;
   margin-bottom: 20vh;
   position: relative;
-  
+
   @media screen and (max-width: 1300px) {
     margin-top: 20vh;
     margin-bottom: 30vh;
@@ -61,7 +74,6 @@ const Circle = styled.div`
   top: 46%;
   transform: translate(-50%, -50%);
   border-radius: 860px;
-  background: #fff5f5;
   z-index: -1;
   overflow: hidden;
   transform: 1s ease;
@@ -115,7 +127,6 @@ const AboutContainer = styled.div`
   }
   @media screen and (max-width: 1200px) {
     width: 450px;
-    
   }
   @media screen and (max-width: 1025px) {
     width: 400px;
@@ -158,7 +169,7 @@ const ImageCont = styled.div`
     top: 50px;
   }
   @media screen and (max-width: 500px) {
-  display: none;
+    display: none;
   }
 `
 

@@ -11,14 +11,10 @@ import ReactGA from "react-ga"
 import CirclePage from "./circlePage.component"
 import PortableText from "@sanity/block-content-to-react"
 
-
 const HomeCarousel = styled(Carousel)`
   height: 100vh;
   width: 100%;
   font-size: 40px;
-  ul {
-    padding: 0;
-  }
 
   .slide iframe {
     margin: 0 !important;
@@ -31,33 +27,35 @@ const HomeCarousel = styled(Carousel)`
   @media only screen and (max-width: 800px) {
     height: 70vh;
   }
-  
-  h1 {
-    padding-top: 250px;
 
-    @media only screen and (max-width: 1300px) {
-    font-size: 45px;
-  }
-    @media only screen and (max-width: 1000px) {
+  p,
+  ul,
+  h1 {
     font-size: 40px;
   }
-    @media only screen and (max-width: 600px) {
-      padding-top: 210px;
+
+  @media only screen and (max-width: 1300px) {
+    font-size: 45px;
+  }
+  @media only screen and (max-width: 1000px) {
+    font-size: 40px;
+  }
+  @media only screen and (max-width: 600px) {
+    padding-top: 210px;
     font-size: 32px;
   }
-    @media only screen and (max-width: 550px) {
-      padding-top: 210px;
+  @media only screen and (max-width: 550px) {
+    padding-top: 210px;
     font-size: 25px;
   }
-    @media only screen and (max-width: 480px) {
-      padding-top: 210px;
+  @media only screen and (max-width: 480px) {
+    padding-top: 210px;
     font-size: 22px;
-  }
   }
 `
 
 const ContCont = styled.div`
-    overflow-x: hidden;
+  overflow-x: hidden;
 `
 
 const HomeContainer = styled.div`
@@ -75,7 +73,6 @@ const PageContainer = styled.div`
   box-sizing: border-box;
   padding: 0 8%;
   line-height: 24px;
-  
 `
 
 const Home = ({ home, about, services, contact, team, circlePage }) => {
@@ -97,7 +94,11 @@ const Home = ({ home, about, services, contact, team, circlePage }) => {
         {home.length > 0 ? (
           <HomeCarousel {...settings}>
             {home.map((homeItem, idx) => (
-              <HeaderImage key={idx} slider={homeItem} blocks={homeItem.heroText} />
+              <HeaderImage
+                key={idx}
+                slider={homeItem}
+                blocks={homeItem.heroText}
+              />
             ))}
           </HomeCarousel>
         ) : null}

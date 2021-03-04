@@ -8,7 +8,6 @@ const StyledMenu = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: ${({ theme }) => theme.primaryLight};
   height: auto;
   transform: ${({ open }) => (open ? "translate(0)" : "translate(-100%)")};
   text-align: left;
@@ -28,11 +27,11 @@ const StyledMenu = styled.nav`
 `
 
 const NavLink = styled(Link)`
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
-  padding: 0.5rem 0;
+  padding: 0.5rem 2rem;
   font-weight: bold;
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.25rem;
   color: white;
   text-decoration: none;
   transition: color 0.1s linear;
@@ -51,6 +50,19 @@ const NavLink = styled(Link)`
 
 const Menu = ({ open, setOpen }) => {
   const [navigation, setNavigation] = useState("")
+  const [color, setColor] = useState("")
+
+  useEffect(() => {
+    const colorQuery = `*[_type == "colorScheme"]`
+
+    sanityClient.fetch(colorQuery).then((color) => {
+      color.forEach((color) => {
+        setColor(color)
+      })
+    })
+
+    return
+  }, [])
 
   useEffect(() => {
     const navigationQuery = `*[_type == "navigation"]`
@@ -64,22 +76,31 @@ const Menu = ({ open, setOpen }) => {
     return
   }, [])
 
-  
   const scrollWithOffset = (el, offset) => {
     const elementPosition = el.offsetTop - offset
     window.scroll({
       top: elementPosition,
       left: 0,
-      behavior: "smooth"
-    })}
-  
-  
+      behavior: "smooth",
+    })
+  }
+
   return (
-    <StyledMenu open={open}>
-      <div style={{ height: "1rem" }}></div>
+    <StyledMenu
+      open={open}
+      style={{ backgroundColor: `${color.secondColor.hex}` }}
+    >
+      <div style={{ height: "1.2rem" }}></div>
       {navigation
         ? navigation.menu.map((item, id) => (
-            <NavLink id={id} scroll={el => scrollWithOffset(el, 85)} to={`/#${item.link}`} smooth onClick={() => setOpen(!open)} key={item._key}>
+            <NavLink
+              id={id}
+              scroll={(el) => scrollWithOffset(el, 85)}
+              to={`/#${item.link}`}
+              smooth
+              onClick={() => setOpen(!open)}
+              key={item._key}
+            >
               {item.link}
             </NavLink>
           ))
