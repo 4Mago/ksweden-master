@@ -29,13 +29,22 @@ const TitleCont = styled.div`
   width: 100%;
   text-align: left;
   margin-bottom: 55px;
+  
+  @media screen and (max-width: 500px) {
+    
+    text-align: center;    
+  }
 `
 
-const TitleText = styled.h2`
+const TitleText = styled.h1`
   font-size: 64px;
   margin-bottom: 2%;
+  text-align: center;
   @media screen and (max-width: 800px) {
-    font-size: 36px;
+    font-size: 52px;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 46px;
   }
 `
 
@@ -47,13 +56,14 @@ const ItemContainer = styled.div`
   position: relative;
 `
 
-const Title = styled.h2`
+const Title = styled.p`
   font-size: 33px;
   padding: 15px 0;
   margin: 0;
   @media screen and (max-width: 800px) {
     font-size: 36px;
   }
+
 `
 
 const ServicesImage = styled.img`
@@ -91,7 +101,8 @@ const Desc = styled(PortableText)`
   transition: all 0.2s ease-in-out;
 
   ul {
-    padding-left: 0;
+    text-align: left;
+    padding-left: 25%;
     list-style-position: inside;
   }
 `
@@ -105,6 +116,7 @@ const Overlay = styled.div`
   background-image: linear-gradient(to bottom, transparent, white);
   position: absolute;
   pointer-events: none;
+  
 `
 
 const DescText = styled.a`
@@ -131,6 +143,10 @@ const ReadMoreContainer = styled.div`
   height: auto;
   transition: all 0.2s ease-in-out;
   min-height: 350px;
+
+  @media screen and (max-width: 500px) {
+    min-height: 400px;    
+  }
 `
 
 const Services = ({ services }) => {
@@ -138,10 +154,10 @@ const Services = ({ services }) => {
   // overlay.style.background = 'transparent'
   const readMore = (idx) => {
     document.getElementById(`content` + idx).style.cssText =
-      "top: 0; height: 350px"
+      "top: 0; height: 450px"
     document.getElementById(`overlay` + idx).style.cssText =
       "background-color: white; opacity: 0.85; z-index: 0;"
-    document.getElementById("image" + idx).style.cssText = "height: 350px;"
+    document.getElementById("image" + idx).style.cssText = "height: 450px;"
     document.getElementById("readmore" + idx).style.cssText = "display: none;"
     document.getElementById("readless" + idx).style.cssText = "display: block;"
   }
@@ -158,7 +174,7 @@ const Services = ({ services }) => {
 
   return (
     <>
-      <TitleCont>
+      <TitleCont id="Tjänster">
         <TitleText>Våra Tjänster</TitleText>
       </TitleCont>
       <TjanstCont id="services">
@@ -172,7 +188,7 @@ const Services = ({ services }) => {
                     src={urlFor(servicesItem.thumbnail).url()}
                   />
                   <ContDesc id={`content` + idx}>
-                    <Overlay id={`overlay` + idx} />
+                    <Overlay id={`overlay` + idx}  />
                     <Desc blocks={servicesItem.description} />
                   </ContDesc>
                 </ReadMoreContainer>

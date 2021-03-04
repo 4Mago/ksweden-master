@@ -9,6 +9,8 @@ import About from "./about.component"
 import Contact from "./contact.component"
 import ReactGA from "react-ga"
 import CirclePage from "./circlePage.component"
+import PortableText from "@sanity/block-content-to-react"
+
 
 const HomeCarousel = styled(Carousel)`
   height: 100vh;
@@ -29,10 +31,35 @@ const HomeCarousel = styled(Carousel)`
   @media only screen and (max-width: 800px) {
     height: 70vh;
   }
-  .h1 {
-    width: 65%;
+  
+  h1 {
+    padding-top: 250px;
+
+    @media only screen and (max-width: 1300px) {
+    font-size: 45px;
+  }
+    @media only screen and (max-width: 1000px) {
+    font-size: 40px;
+  }
+    @media only screen and (max-width: 600px) {
+      padding-top: 210px;
+    font-size: 32px;
+  }
+    @media only screen and (max-width: 550px) {
+      padding-top: 210px;
+    font-size: 25px;
+  }
+    @media only screen and (max-width: 480px) {
+      padding-top: 210px;
+    font-size: 22px;
+  }
   }
 `
+
+const ContCont = styled.div`
+    overflow-x: hidden;
+`
+
 const HomeContainer = styled.div`
   position: relative;
   width: 100%;
@@ -42,13 +69,13 @@ const HomeContainer = styled.div`
     background: none;
   }
 `
-const AboutImage = styled.img``
 const PageContainer = styled.div`
   height: auto;
   width: 100%;
   box-sizing: border-box;
   padding: 0 8%;
   line-height: 24px;
+  
 `
 
 const Home = ({ home, about, services, contact, team, circlePage }) => {
@@ -65,12 +92,12 @@ const Home = ({ home, about, services, contact, team, circlePage }) => {
     transitionTime: 1000,
   }
   return (
-    <>
+    <ContCont>
       <HomeContainer id="home">
         {home.length > 0 ? (
           <HomeCarousel {...settings}>
             {home.map((homeItem, idx) => (
-              <HeaderImage key={idx} slider={homeItem} />
+              <HeaderImage key={idx} slider={homeItem} blocks={homeItem.heroText} />
             ))}
           </HomeCarousel>
         ) : null}
@@ -82,7 +109,7 @@ const Home = ({ home, about, services, contact, team, circlePage }) => {
         <About about={about} />
         <Contact contact={contact} team={team} />
       </PageContainer>
-    </>
+    </ContCont>
   )
 }
 
