@@ -10,6 +10,7 @@ import Contact from "./contact.component"
 import ReactGA from "react-ga"
 import CirclePage from "./circlePage.component"
 import PortableText from "@sanity/block-content-to-react"
+import { motion } from "framer-motion"
 
 const HomeCarousel = styled(Carousel)`
   height: 100vh;
@@ -67,7 +68,7 @@ const HomeContainer = styled.div`
     background: none;
   }
 `
-const PageContainer = styled.div`
+const PageContainer = styled(motion.div)`
   height: auto;
   width: 100%;
   box-sizing: border-box;

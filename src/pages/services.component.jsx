@@ -3,6 +3,7 @@ import styled, { css } from "styled-components"
 import imageUrlBuilder from "@sanity/image-url"
 import sanityClient from "../Client"
 import PortableText from "@sanity/block-content-to-react"
+import { motion } from "framer-motion"
 
 const builder = imageUrlBuilder(sanityClient)
 function urlFor(source) {
@@ -29,10 +30,9 @@ const TitleCont = styled.div`
   width: 100%;
   text-align: left;
   margin-bottom: 55px;
-  
+
   @media screen and (max-width: 500px) {
-    
-    text-align: center;    
+    text-align: center;
   }
 `
 
@@ -63,7 +63,6 @@ const Title = styled.p`
   @media screen and (max-width: 800px) {
     font-size: 36px;
   }
-
 `
 
 const ServicesImage = styled.img`
@@ -116,7 +115,6 @@ const Overlay = styled.div`
   background-image: linear-gradient(to bottom, transparent, white);
   position: absolute;
   pointer-events: none;
-  
 `
 
 const DescText = styled.a`
@@ -145,11 +143,16 @@ const ReadMoreContainer = styled.div`
   min-height: 350px;
 
   @media screen and (max-width: 500px) {
-    min-height: 400px;    
+    min-height: 400px;
   }
 `
+const transition = { duration: 2.6, ease: [0.43, 0.013, 0.23, 0.96] }
+const variants = {
+  visible: { opacity: 1, transition: transition },
+  hidden: { opacity: 0, transition: transition },
+}
 
-const Services = ({ services }) => {
+const Services = ({ services, inView }) => {
   // contDesc.style.overflow = 'default'
   // overlay.style.background = 'transparent'
   const readMore = (idx) => {
@@ -173,7 +176,11 @@ const Services = ({ services }) => {
   }
 
   return (
-    <>
+    <motion.div
+      variants={variants}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+    >
       <TitleCont id="Tjänster">
         <TitleText>Våra Tjänster</TitleText>
       </TitleCont>
@@ -188,7 +195,7 @@ const Services = ({ services }) => {
                     src={urlFor(servicesItem.thumbnail).url()}
                   />
                   <ContDesc id={`content` + idx}>
-                    <Overlay id={`overlay` + idx}  />
+                    <Overlay id={`overlay` + idx} />
                     <Desc blocks={servicesItem.description} />
                   </ContDesc>
                 </ReadMoreContainer>
@@ -202,7 +209,7 @@ const Services = ({ services }) => {
             ))
           : null}
       </TjanstCont>
-    </>
+    </motion.div>
   )
 }
 

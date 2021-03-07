@@ -88,7 +88,7 @@ const Menu = ({ open, setOpen }) => {
   return (
     <StyledMenu
       open={open}
-      style={{ backgroundColor: `${color.secondColor.hex}` }}
+      style={{ backgroundColor: `${color?.secondColor?.hex}` }}
     >
       <div style={{ height: "1.2rem" }}></div>
       {navigation

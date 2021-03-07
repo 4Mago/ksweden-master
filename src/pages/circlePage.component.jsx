@@ -3,8 +3,14 @@ import sanityClient from "../Client"
 import styled from "styled-components"
 import imageUrlBuilder from "@sanity/image-url"
 import PortableText from "@sanity/block-content-to-react"
+import { motion } from "framer-motion"
 
-const CirclePage = ({ about }) => {
+const transition = { duration: 2.6, ease: [0.43, 0.013, 0.23, 0.96] }
+const variants = {
+  visible: { opacity: 1, transition: transition },
+  hidden: { opacity: 0, transition: transition },
+}
+const CirclePage = ({ about, inView }) => {
   const [color, setColor] = useState("")
 
   useEffect(() => {
@@ -20,8 +26,12 @@ const CirclePage = ({ about }) => {
   }, [])
 
   return (
-    <ContCont>
-      <Circle style={{ backgroundColor: `${color.mainColor.hex}` }} />
+    <ContCont
+      variants={variants}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+    >
+      <Circle style={{ backgroundColor: `${color?.mainColor?.hex}` }} />
       <AboutCont>
         <AboutContainer>
           <AboutTitle>{about.title}</AboutTitle>
@@ -42,7 +52,7 @@ function urlFor(source) {
   return builder.image(source)
 }
 
-const ContCont = styled.div`
+const ContCont = styled(motion.div)`
   position: relative;
 `
 

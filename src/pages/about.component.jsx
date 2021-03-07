@@ -3,6 +3,7 @@ import sanityClient from "../Client"
 import styled from "styled-components"
 import imageUrlBuilder from "@sanity/image-url"
 import PortableText from "@sanity/block-content-to-react"
+import { motion } from "framer-motion"
 
 const builder = imageUrlBuilder(sanityClient)
 function urlFor(source) {
@@ -70,21 +71,33 @@ const Desc = styled(PortableText)`
   }
 `
 
-const About = ({ about }) => {
+const transition = { duration: 2.6, ease: [0.43, 0.013, 0.23, 0.96] }
+const variants = {
+  visible: { opacity: 1, transition: transition },
+  hidden: { opacity: 0, transition: transition },
+}
+
+const About = ({ about, inView }) => {
   return (
-    <AboutCont id="Om oss">
-      {about.length > 0
-        ? about.map((aboutItem, idx) => (
-            <AboutContainer key={idx}>
-              <ImageCont>
-                <Image src={urlFor(aboutItem.image).url()} />
-              </ImageCont>
-              <AboutTitle>{aboutItem.title}</AboutTitle>
-              <Desc blocks={aboutItem.description} />
-            </AboutContainer>
-          ))
-        : null}
-    </AboutCont>
+    <motion.div
+      variants={variants}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+    >
+      <AboutCont id="Om oss">
+        {about.length > 0
+          ? about.map((aboutItem, idx) => (
+              <AboutContainer key={idx}>
+                <ImageCont>
+                  <Image src={urlFor(aboutItem.image).url()} />
+                </ImageCont>
+                <AboutTitle>{aboutItem.title}</AboutTitle>
+                <Desc blocks={aboutItem.description} />
+              </AboutContainer>
+            ))
+          : null}
+      </AboutCont>
+    </motion.div>
   )
 }
 

@@ -43,7 +43,7 @@ const Footer = () => {
   }, [])
 
   return (
-    <FooterCont style={{ backgroundColor: `${color.altColor.hex}` }}>
+    <FooterCont style={{ backgroundColor: `${color?.altColor?.hex}` }}>
       <FooterItem>
         <a href="https://www.linkedin.com/company/2868236?trk=tyah&trkInfo=tarId:1411567075903,tas:passacon,idx:1-1-1">
           <img alt="linkedin" src="/linked.svg" />

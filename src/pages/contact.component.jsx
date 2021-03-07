@@ -3,13 +3,20 @@ import styled from "styled-components"
 import PortableText from "@sanity/block-content-to-react"
 import imageUrlBuilder from "@sanity/image-url"
 import sanityClient from "../Client"
+import { motion } from "framer-motion"
 
 const builder = imageUrlBuilder(sanityClient)
 function urlFor(source) {
   return builder.image(source)
 }
 
-const Contact = ({ contact, team }) => {
+const transition = { duration: 2.6, ease: [0.43, 0.013, 0.23, 0.96] }
+const variants = {
+  visible: { opacity: 1, transition: transition },
+  hidden: { opacity: 0, transition: transition },
+}
+
+const Contact = ({ contact, team, inView }) => {
   const [color, setColor] = useState("")
 
   useEffect(() => {
@@ -24,43 +31,49 @@ const Contact = ({ contact, team }) => {
     return
   }, [])
 
-  console.log(color.mainColor)
   return (
-    <ContactContainer id="Kontakt">
-      <Span style={{ backgroundColor: `${color.altColor.hex}` }} />
-      {contact.length > 0
-        ? contact.map((contactItem, id) => (
-            <ContactCont
-              key={id}
-              style={{ backgroundColor: `${color.mainColor.hex}` }}
-            >
-              <ContactTextCont>
-                <ContactTitle>{contactItem.title}</ContactTitle>
-                <ContactText blocks={contactItem.text} />
-                <ContactTele>
-                  <PortableText>{contactItem.text}</PortableText>
-                  <a href="https://www.linkedin.com/company/2868236?trk=tyah&trkInfo=tarId:1411567075903,tas:passacon,idx:1-1-1">
-                    <img alt="linkedin" src="/linked.svg" />
-                  </a>
-                </ContactTele>
-              </ContactTextCont>
-              <MapCont>
-                {team.length > 0
-                  ? team.map((teamItem, id) => (
-                      <ContactContainer key={id}>
-                        <ImageCont>
-                          <Image src={urlFor(teamItem.image).url()} />
-                        </ImageCont>
-                        <Text> Telefon: {teamItem.phone} </Text>
-                        <Text> Email: {teamItem.email} </Text>
-                      </ContactContainer>
-                    ))
-                  : null}
-              </MapCont>
-            </ContactCont>
-          ))
-        : null}
-      <Span />
+    <ContactContainer>
+      <motion.div
+        id="Kontakt"
+        variants={variants}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+      >
+        <Span style={{ backgroundColor: `${color?.altColor?.hex}` }} />
+        {contact.length > 0
+          ? contact.map((contactItem, id) => (
+              <ContactCont
+                key={id}
+                style={{ backgroundColor: `${color?.mainColor?.hex}` }}
+              >
+                <ContactTextCont>
+                  <ContactTitle>{contactItem.title}</ContactTitle>
+                  <ContactText blocks={contactItem.text} />
+                  <ContactTele>
+                    <PortableText>{contactItem.text}</PortableText>
+                    <a href="https://www.linkedin.com/company/2868236?trk=tyah&trkInfo=tarId:1411567075903,tas:passacon,idx:1-1-1">
+                      <img alt="linkedin" src="/linked.svg" />
+                    </a>
+                  </ContactTele>
+                </ContactTextCont>
+                <MapCont>
+                  {team.length > 0
+                    ? team.map((teamItem, id) => (
+                        <ContactContainer key={id}>
+                          <ImageCont>
+                            <Image src={urlFor(teamItem.image).url()} />
+                          </ImageCont>
+                          <Text> Telefon: {teamItem.phone} </Text>
+                          <Text> Email: {teamItem.email} </Text>
+                        </ContactContainer>
+                      ))
+                    : null}
+                </MapCont>
+              </ContactCont>
+            ))
+          : null}
+        <Span />
+      </motion.div>
     </ContactContainer>
   )
 }
