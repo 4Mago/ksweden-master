@@ -11,6 +11,7 @@ import ReactGA from "react-ga"
 import CirclePage from "./circlePage.component"
 import PortableText from "@sanity/block-content-to-react"
 import { motion } from "framer-motion"
+import ScrollDetect from "../scrollDetect"
 
 const HomeCarousel = styled(Carousel)`
   height: 100vh;
@@ -76,6 +77,8 @@ const PageContainer = styled(motion.div)`
   line-height: 24px;
 `
 
+const transition = { duration: 0.6, ease: [0.43, 0.013, 0.23, 0.96] }
+
 const Home = ({ home, about, services, contact, team, circlePage }) => {
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search)
@@ -105,11 +108,24 @@ const Home = ({ home, about, services, contact, team, circlePage }) => {
         ) : null}
       </HomeContainer>
       <ClientContainer />
-      <PageContainer>
-        <CirclePage about={circlePage} />
-        <Services services={services} />
-        <About about={about} />
-        <Contact contact={contact} team={team} />
+      <PageContainer
+        exit={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        transition={transition}
+      >
+        <ScrollDetect>
+          <CirclePage about={circlePage} />
+        </ScrollDetect>
+        <ScrollDetect>
+          <Services services={services} />
+        </ScrollDetect>
+        <ScrollDetect>
+          <About about={about} />
+        </ScrollDetect>
+        <ScrollDetect>
+          <Contact contact={contact} team={team} />
+        </ScrollDetect>
       </PageContainer>
     </ContCont>
   )
