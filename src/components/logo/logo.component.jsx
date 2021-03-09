@@ -19,10 +19,16 @@ const StyledLogo = styled.img`
   z-index: 100;
   cursor: default;
   @media screen and (max-width: 1300px) {
+    top: 26vh;
     width: 265px;
   }
   @media screen and (max-width: 800px) {
-    width: 150px;
+    width: 85px;
+    height: auto;
+    top: 32px;
+    left: 85%;
+    z-index: 100;
+    position: fixed;
   }
 `
 

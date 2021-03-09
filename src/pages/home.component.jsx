@@ -34,26 +34,24 @@ const HomeCarousel = styled(Carousel)`
   ul,
   h1 {
     font-size: 40px;
-  }
 
-  @media only screen and (max-width: 1300px) {
+
+  @media only screen and (min-width: 1300px) {
     font-size: 45px;
   }
   @media only screen and (max-width: 1000px) {
-    font-size: 40px;
+    font-size: 35px;
   }
   @media only screen and (max-width: 600px) {
-    padding-top: 210px;
     font-size: 32px;
   }
   @media only screen and (max-width: 550px) {
-    padding-top: 210px;
     font-size: 25px;
   }
   @media only screen and (max-width: 480px) {
-    padding-top: 210px;
     font-size: 22px;
   }
+}
 `
 
 const ContCont = styled.div`
@@ -98,7 +96,7 @@ const Home = ({ home, about, services, contact, team, circlePage }) => {
         {home.length > 0 ? (
           <HomeCarousel {...settings}>
             {home.map((homeItem, idx) => (
-              <HeaderImage
+              <HeaderImage 
                 key={idx}
                 slider={homeItem}
                 blocks={homeItem.heroText}

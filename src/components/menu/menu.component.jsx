@@ -102,6 +102,7 @@ const Menu = ({ open, setOpen }) => {
               key={item._key}
             >
               {item.link}
+              <br />
             </NavLink>
           ))
         : null}
