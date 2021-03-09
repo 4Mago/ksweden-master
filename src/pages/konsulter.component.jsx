@@ -9,8 +9,7 @@ const Konsulter = ({konsult}) => {
         pointerEvents: 'none'
     })
     const [slide, setSlide] = useState(0)
-   
-  
+
     return (
         <div style={{height:'auto'}} id="konsulter">
             <Title title="Konsulter" />

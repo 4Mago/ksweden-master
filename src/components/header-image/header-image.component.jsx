@@ -41,6 +41,7 @@ const Title = styled(BlockContent)`
 	max-width: 700px;
 	height: auto;
 	text-align: left;
+	text-decoration: none;
 	font-size: 64px;
 	z-index: 1;
 	@media screen and (max-width: 1200px) {
