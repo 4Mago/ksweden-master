@@ -37,15 +37,17 @@ const Title = styled(BlockContent)`
 	color: ${({ theme }) => theme.secondaryLight};
 	padding-left: 6rem;
 	width: 70%;
-	padding-top: 75px;
+	padding-top: 20%;
 	max-width: 700px;
 	height: auto;
 	text-align: left;
 	text-decoration: none;
 	font-size: 64px;
 	z-index: 1;
-	@media screen and (max-width: 1200px) {
-		padding-top: 100px;
+
+	li {
+		list-style-type: none;
+		text-decoration: none;
 	}
 	@media screen and (max-width: 800px) {
 		padding-top: 50px;

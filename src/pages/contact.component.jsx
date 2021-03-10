@@ -99,10 +99,12 @@ const ContactCont = styled.div`
 `
 const ContactTitle = styled.h2`
   text-align: left;
-  font-size: 48px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 64px;
+  line-height: 50px;
   margin-bottom: 12%;
   @media screen and (max-width: 800px) {
-    font-size: 32px;
+    font-size: 48px;
   }
 `
 

@@ -37,8 +37,9 @@ const TitleCont = styled.div`
 `
 
 const TitleText = styled.h1`
+  font-family: "Bebas Neue", sans-serif;
   font-size: 64px;
-  margin-bottom: 2%;
+  line-height: 50px;  margin-bottom: 2%;
   text-align: center;
   @media screen and (max-width: 800px) {
     font-size: 52px;
@@ -57,7 +58,9 @@ const ItemContainer = styled.div`
 `
 
 const Title = styled.p`
-  font-size: 33px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 48px;
+  line-height: 50px;
   padding: 15px 0;
   margin: 0;
   @media screen and (max-width: 800px) {
@@ -203,7 +206,7 @@ const Services = ({ services, inView }) => {
                   Läs mer
                 </DescText>
                 <DescText2 id={"readless" + idx} onClick={() => readLess(idx)}>
-                  ᕙ(`▿´)ᕗ
+                &nbsp;Göm&nbsp;
                 </DescText2>
               </ItemContainer>
             ))
