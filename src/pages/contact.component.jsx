@@ -125,6 +125,7 @@ const ImageCont = styled.div`
   flex-flow: row;
   justify-content: center;
   align-items: center;
+  object-fit: cover;
 `
 const Image = styled.img`
   width: 250px;
