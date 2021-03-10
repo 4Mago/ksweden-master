@@ -95,6 +95,7 @@ const ContactCont = styled.div`
     justify-content: center;
     align-items: center;
     height: auto;
+    margin-bottom: 25px;
   }
 `
 const ContactTitle = styled.h2`
@@ -113,7 +114,7 @@ const ContactText = styled(PortableText)`
 `
 const ContactTextCont = styled.div`
   width: 50%;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   @media screen and (max-width: 900px) {
     width: 100%;
   }
@@ -122,10 +123,18 @@ const ContactTextCont = styled.div`
 const ImageCont = styled.div`
   display: flex;
   flex-flow: row;
+  justify-content: center;
+  align-items: center;
 `
 const Image = styled.img`
-  width: 150px;
-  height: 200px;
+  width: 250px;
+  height: 300px;
+  padding: 50px;
+  padding-bottom: 15px;
+
+  @media screen and (max-width: 900px) {
+    padding-top: 0;
+  }
 `
 
 const MapCont = styled.div`
@@ -147,7 +156,8 @@ const ContactLink = styled.a`
   color: black;
 `
 const Text = styled.p`
-  height: 15px;
+  height: 10px;
+  text-align: center;
 `
 
 const ContactContainer = styled.div`

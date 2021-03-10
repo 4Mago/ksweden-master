@@ -146,7 +146,7 @@ const AboutContainer = styled.div`
     width: auto;
   }
   @media screen and (max-width: 500px) {
-    padding-left: 20px;
+    text-align: justify;
   }
 `
 const ImageCont = styled.div`
@@ -207,7 +207,6 @@ const AboutTitle = styled.h2`
     padding-bottom: 8px;
     font-size: 32px;
     line-height: 32px;
-    width: 300px;
   }
 `
 const Desc = styled(PortableText)`

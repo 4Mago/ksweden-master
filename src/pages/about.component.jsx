@@ -110,18 +110,20 @@ const Circle = styled.div`
   @media screen and (max-width: 800px) {
     height: 600px;
     width: 600px;
-    top: auto;
     border-radius: 800px;
   }
   @media screen and (max-width: 799px) {
-    top: 46%;
+    height: 700px;
+    width: 700px;
+    border-radius: 700px;
+    left: 50%;
+    top: 57%;
   }
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
     height: 650px;
     width: 650px;
-    top: auto;
     border-radius: 700px;
-    top: 44%;
+    left: 50%;
   }
   @media screen and (max-width: 400px) {
     height: 580px;
@@ -149,8 +151,8 @@ const AboutContainer = styled.div`
     width: 400px;
   }
   @media screen and (max-width: 800px) {
-    width: auto;
-  }
+    width: 400px;
+    }
   @media screen and (max-width: 500px) {
     padding-left: 20px;
   }
@@ -166,11 +168,10 @@ const ImageCont = styled.div`
 
   @media screen and (max-width: 1200px) {
     width: 450px;
-    border-radius: 350px;
+    border-radius: 450px;
     height: 450px;
     align-items: flex-start;
     position: relative;
-    bottom: 120px;
   }
   @media screen and (max-width: 1025px) {
     width: 350px;
@@ -178,11 +179,9 @@ const ImageCont = styled.div`
     height: 350px;
   }
   @media screen and (max-width: 800px) {
-    height: 550px;
-
-    width: auto;
-    border-radius: 100%;
-    height: auto;
+    height: 350px;
+    width: 350px;
+    border-radius: 350px;
     top: 50px;
   }
   @media screen and (max-width: 500px) {
@@ -199,7 +198,7 @@ const AboutTitle = styled.h2`
   font-family: "Bebas Neue", sans-serif;
   font-size: 48px;
   line-height: 50px;
-  width: 450px;
+  max-width: 500px;
   margin-bottom: 0;
 
   @media screen and (min-width: 1200px) {
@@ -213,7 +212,7 @@ const AboutTitle = styled.h2`
     padding-bottom: 8px;
     font-size: 32px;
     line-height: 32px;
-    width: 300px;
+    width: 350px;
   }
 `
 const Desc = styled(PortableText)`
