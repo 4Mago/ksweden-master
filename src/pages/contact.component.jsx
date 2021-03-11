@@ -95,7 +95,7 @@ const ContactCont = styled.div`
     justify-content: center;
     align-items: center;
     height: auto;
-    margin-bottom: 25px;
+    margin-bottom: 35px;
   }
 `
 const ContactTitle = styled.h2`
