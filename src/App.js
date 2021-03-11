@@ -7,9 +7,6 @@ import Header from './components/header/header.component.jsx'
 import Footer from './components/footer/footer-component.jsx'
 import sanityClient from './Client'
 import styled from 'styled-components'
-import CookieConsent from 'react-cookie-consent'
-import ReactGA from 'react-ga'
-import CirclePage from './pages/circlePage.component'
 
 const HomePage = lazy(() => import('./pages/home.component.jsx'))
 const Terms = lazy(() => import('./pages/terms.component.jsx'))
@@ -134,24 +131,6 @@ function App() {
 	`
 	return (
 		<div className="App">
-			{/* <CookieConsent
-				enableDeclineButton
-				disableStyles={true}
-				flipButtons
-				declineButtonClasses="decline-button"
-				buttonClasses="cookie-button"
-				buttonText={'Acceptera'}
-				declineButtonText={'Nej Tack'}
-				containerClasses="cookie-container"
-				onAccept={() => cookieTrigger(true)}
-			>
-				Den här webbplatsen använder cookies, som samlar information om hur du
-				interagerar med sidan. Genom att acceptera tillåter du att vi samlar och
-				behandlar dina personuppgifter enligt vår{' '}
-				<Link style={{ color: 'white' }} to="./integritets-policy">
-					integritetspolicy
-				</Link>
-			</CookieConsent> */}
 			<ThemeProvider theme={theme}>
 				<Header />
 				<Suspense

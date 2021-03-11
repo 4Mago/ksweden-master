@@ -199,12 +199,13 @@ const AboutTitle = styled.h2`
   @media screen and (min-width: 1200px) {
     font-size: 64px;
     line-height: 60px;
-    width: 600px;
+    width: auto;
+    max-width: 600px;
     padding: 0;
   }
   @media screen and (max-width: 500px) {
     text-align: center;
-    padding-bottom: 8px;
+    padding: 8px;
     font-size: 32px;
     line-height: 32px;
   }
