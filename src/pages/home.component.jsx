@@ -3,7 +3,6 @@ import HeaderImage from "../components/header-image/header-image.component"
 import styled from "styled-components"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from "react-responsive-carousel"
-import ClientContainer from "../components/client-logo-container/client-logo-container.component"
 import Services from "./services.component"
 import About from "./about.component"
 import Contact from "./contact.component"
@@ -105,7 +104,6 @@ const Home = ({ home, about, services, contact, team, circlePage }) => {
           </HomeCarousel>
         ) : null}
       </HomeContainer>
-      <ClientContainer />
       <PageContainer
         exit={{ opacity: 0 }}
         animate={{ opacity: 1 }}
