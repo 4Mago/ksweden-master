@@ -147,6 +147,7 @@ const AboutContainer = styled.div`
   }
   @media screen and (max-width: 500px) {
     text-align: justify;
+    width: 90%;
   }
 `
 const ImageCont = styled.div`
