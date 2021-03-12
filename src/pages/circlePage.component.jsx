@@ -209,6 +209,7 @@ const AboutTitle = styled.h2`
     padding: 8px;
     font-size: 32px;
     line-height: 32px;
+    max-width: 400px;
   }
 `
 const Desc = styled(PortableText)`
