@@ -206,10 +206,10 @@ const AboutTitle = styled.h2`
   }
   @media screen and (max-width: 500px) {
     text-align: center;
-    padding: 8px;
+    padding: 8px 0;
     font-size: 32px;
     line-height: 32px;
-    max-width: 400px;
+    max-width: 100%;
   }
 `
 const Desc = styled(PortableText)`
