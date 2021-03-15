@@ -34,7 +34,7 @@ const About = ({ about, inView }) => {
     >
       <Circle style={{ backgroundColor: `${color?.mainColor?.hex}` }} />
       <AboutCont
-            id="Om oss"
+      id="Om-oss"
       >
         {about.length > 0 
         ? about.map((aboutItem, idx) => (

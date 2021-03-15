@@ -101,7 +101,7 @@ const Menu = ({ open, setOpen }) => {
               onClick={() => setOpen(!open)}
               key={item._key}
             >
-              {item.link}
+              {item.name}
               <br />
             </NavLink>
           ))
