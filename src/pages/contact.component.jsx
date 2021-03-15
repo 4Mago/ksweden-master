@@ -34,7 +34,6 @@ const Contact = ({ contact, team, inView }) => {
   return (
     <ContactContainer>
       <motion.div
-        id="Kontakt"
         variants={variants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
@@ -56,7 +55,7 @@ const Contact = ({ contact, team, inView }) => {
                     </a>
                   </ContactTele>
                 </ContactTextCont>
-                <MapCont>
+                <MapCont id="Kontakt">
                   {team.length > 0
                     ? team.map((teamItem, id) => (
                         <ContactContainer key={id}>
@@ -90,6 +89,7 @@ const ContactCont = styled.div`
   padding: 5%;
   box-sizing: border-box;
   align-items: flex-start;
+
   @media screen and (max-width: 900px) {
     flex-flow: column wrap;
     justify-content: center;
@@ -130,9 +130,20 @@ const ImageCont = styled.div`
 const Image = styled.img`
   width: 250px;
   height: 300px;
-  padding: 50px;
+  padding: 15%;
   padding-bottom: 15px;
+  border: 1px solid black;
 
+  @media screen and (max-width: 1600px) {
+    padding: 5%;
+  }
+  @media screen and (max-width: 1400px) {
+    width: auto;
+    max-width: 250px;
+    height: auto;
+    max-height: 300px;
+    padding: 2%;
+  }
   @media screen and (max-width: 900px) {
     padding-top: 0;
   }
@@ -141,8 +152,16 @@ const Image = styled.img`
 const MapCont = styled.div`
   width: 50%;
   display: flex;
+  @media screen and (max-width: 1300px) {
+    flex-flow: column;
+      }
   @media screen and (max-width: 900px) {
     width: 100%;
+    flex-flow: row;
+  }
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    flex-flow: column;
   }
 `
 const ContactTele = styled.h4`

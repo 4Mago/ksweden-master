@@ -33,7 +33,9 @@ const About = ({ about, inView }) => {
       animate={inView ? "visible" : "hidden"}
     >
       <Circle style={{ backgroundColor: `${color?.mainColor?.hex}` }} />
-      <AboutCont>
+      <AboutCont
+            id="Om oss"
+      >
         {about.length > 0 
         ? about.map((aboutItem, idx) => (
           <>
@@ -145,6 +147,8 @@ const Circle = styled.div`
 const AboutContainer = styled.div`
   display: flex;
   flex-flow: column;
+  justify-content: center;
+  align-items: center;
   width: 55%;
   text-align: left;
   z-index: 9;
@@ -163,7 +167,8 @@ const AboutContainer = styled.div`
     width: 400px;
     }
   @media screen and (max-width: 500px) {
-    padding-left: 20px;
+    text-align: center;
+    max-width: 380px;
   }
 `
 const ImageCont = styled.div`
@@ -199,6 +204,8 @@ const ImageCont = styled.div`
     width: 350px;
     border-radius: 350px;
     top: 50px;
+    display: none;
+
   }
   @media screen and (max-width: 500px) {
     display: none;
@@ -221,14 +228,13 @@ const AboutTitle = styled.h2`
     font-size: 64px;
     line-height: 60px;
     width: 600px;
-    padding: 0;
   }
   @media screen and (max-width: 500px) {
-    text-align: center;
     padding-bottom: 8px;
-    font-size: 32px;
+    font-size: 28px;
     line-height: 32px;
-    max-width: 350px;
+    max-width: 300px;
+    width: auto;
   }
 `
 const Desc = styled(PortableText)`
