@@ -163,15 +163,15 @@ const AboutContainer = styled.div`
   }
 `
 const ImageCont = styled.div`
-  width: 50%;
-  border-radius: 550px;
+  width: 550px;
+  border-radius: 850px;
   height: 550px;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 
-  @media screen and (min-width: 1400px) {
+  @media screen and (min-width: 1650px) {
     width: 700px;
     border-radius: 700px;
     height: 700px;
