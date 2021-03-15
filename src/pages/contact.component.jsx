@@ -132,7 +132,6 @@ const Image = styled.img`
   height: 300px;
   padding: 15%;
   padding-bottom: 15px;
-  border: 1px solid black;
 
   @media screen and (max-width: 1600px) {
     padding: 5%;
