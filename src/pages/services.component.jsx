@@ -127,6 +127,11 @@ const DescText = styled.a`
   border-radius: 8px;
   padding: 5px 7px;
   cursor: pointer;
+
+  @media screen and (max-width: 500px) {
+    position: relative;
+    bottom: 44px;
+  }
 `
 const DescText2 = styled.a`
   border: solid black;

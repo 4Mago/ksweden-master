@@ -26,7 +26,7 @@ const HomeCarousel = styled(Carousel)`
     padding: 20px !important;
   }
   @media only screen and (max-width: 800px) {
-    height: 70vh;
+    height: 75vh;
   }
 
   p,
@@ -62,6 +62,11 @@ const HomeContainer = styled.div`
   width: 100%;
   height: auto;
   padding-bottom: 100px;
+
+  @media screen and (max-width: 700px) {
+    padding-bottom: 0;
+
+  }
   .carousel.carousel-slider .control-arrow:hover  {
     background: none;
   }

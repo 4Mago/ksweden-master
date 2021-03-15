@@ -2,11 +2,17 @@ import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 import sanityClient from "../../Client"
+import imageUrlBuilder from "@sanity/image-url"
+
+const builder = imageUrlBuilder(sanityClient)
+function urlFor(source) {
+  return builder.image(source)
+}
 
 const FooterCont = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   height: 70px;
   position: absolute;
@@ -23,7 +29,7 @@ const FooterCont = styled.div`
 const FooterItem = styled.div`
   margin: 0 5px;
   img {
-    width: 25px;
+    width: 75px;
   }
 `
 
@@ -42,11 +48,26 @@ const Footer = () => {
     return
   }, [])
 
+  const [logo, setLogo] = useState("")
+
+  useEffect(() => {
+    const logoQuery = `*[_type == "navigation"]`
+
+    sanityClient.fetch(logoQuery).then((logo) => {
+      logo.forEach((logo) => {
+        setLogo(logo)
+      })
+    })
+
+    return
+  }, [])
+
+
   return (
     <FooterCont style={{ backgroundColor: `${color?.altColor?.hex}` }}>
       <FooterItem>
-        <a href="https://www.linkedin.com/company/2868236?trk=tyah&trkInfo=tarId:1411567075903,tas:passacon,idx:1-1-1">
-          <img alt="linkedin" src="/linked.svg" />
+        <a href="#">
+          <img alt="k sweden" src={urlFor(logo.logo).url()}/>
         </a>
       </FooterItem>
       <FooterItem>

@@ -55,7 +55,6 @@ const Title = styled(BlockContent)`
 		width: 80%;
 	}
 	@media screen and (max-width: 500px) {
-		padding-top: 0;
 		font-size: 18px;
 		width: 80%;
 		padding-left: 3.5rem;
@@ -75,7 +74,7 @@ const Overlay = styled.div`
 	top: 0;
 	z-index: 0;
 	@media only screen and (max-width: 800px) {
-		height: 70vh;
+		height: 75vh;
 	}
 `
 

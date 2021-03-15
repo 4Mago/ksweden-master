@@ -8,7 +8,7 @@ const StyledBurger = styled.button`
   justify-content: space-around;
   width: 2.5rem;
   height: 2.5rem;
-  margin-left: 20px;
+  margin-left: 10px;
   background: transparent;
   border: none;
   cursor: pointer;

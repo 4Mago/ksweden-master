@@ -1,17 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import ReactGA from 'react-ga'
 
-const LinkCont = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-	flex-flow: column;
-`
 
 const Cont = styled.div`
-	width: 70%;
+	min-width: 70%;
+	max-width: 90%;
 	padding: 100px 5%;
 	height: auto;
 	text-align: left;
@@ -50,29 +43,6 @@ const Terms = () => {
 					Vi berättar sedan utifrån kartorna hur vi behandlar personuppgifter i
 					vår verksamhet.
 				</p>
-				<h2>Vi har följande processer</h2>
-				<LinkCont>
-					<Link to="/marknadsforing">Marknadsföring</Link>
-					<Link to="/forsaljning">Försäljning</Link>
-					<Link to="/leverans">Leverans</Link>
-					<Link to="hantering-bokforing-skatter">
-						Hantering av bokföring och skatter
-					</Link>
-				</LinkCont>
-				<p>
-					För att göra bilden än mer tydlig kan du också läsa om vår
-					personuppgiftshantering i följande fall:
-				</p>
-				<LinkCont>
-					<Link to="/partners">Våra partners personuppgifter</Link>
-					<Link to="/mejl-dokumenthanteringspolicy">
-						Vår mejl och dokumenthanteringspolicy
-					</Link>
-					<Link to="/kontakt-tredje-land">Kontakter med tredje land</Link>
-					<Link to="/analytics">
-						Inbördes arrangemang kopplade till hemsida och sociala medier
-					</Link>
-				</LinkCont>
 				<h2>Dina rättigheter</h2>
 				<p>
 					I vår integritetspolicy lämnar vi information om vår behandling av

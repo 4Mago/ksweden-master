@@ -55,10 +55,12 @@ function urlFor(source) {
 
 const ContCont = styled(motion.div)`
   position: relative;
+  margin-top: 20vh;
+
 `
 
 const AboutCont = styled.div`
-  height: auto;
+  height: 70vh;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -66,6 +68,10 @@ const AboutCont = styled.div`
   margin-bottom: 20vh;
   position: relative;
 
+  @media screen and (min-width: 1400px) {
+  height: 80vh;
+
+  }
   @media screen and (max-width: 1300px) {
     margin-top: 20vh;
     margin-bottom: 30vh;
@@ -73,7 +79,6 @@ const AboutCont = styled.div`
   @media screen and (max-width: 800px) {
     flex-flow: column;
     justify-content: center;
-    margin-top: 20vh;
     margin-bottom: 30vh;
   }
 `
@@ -89,6 +94,12 @@ const Circle = styled.div`
   overflow: hidden;
   transform: 1s ease;
 
+  @media screen and (min-width: 1400px) {
+    height: 900px;
+    width: 900px;
+    border-radius: 900px;
+    top: 50%;
+  }
   @media screen and (max-width: 1200px) {
     height: 800px;
     width: 800px;
@@ -129,6 +140,7 @@ const AboutContainer = styled.div`
   display: flex;
   flex-flow: column;
   width: 50%;
+  justify-content: flex-start;
   text-align: left;
   z-index: 9;
 
@@ -146,8 +158,8 @@ const AboutContainer = styled.div`
     width: auto;
   }
   @media screen and (max-width: 500px) {
-    text-align: justify;
-    width: 90%;
+    text-align: center;
+    width: 95%;
   }
 `
 const ImageCont = styled.div`
@@ -159,9 +171,15 @@ const ImageCont = styled.div`
   align-items: center;
   overflow: hidden;
 
+  @media screen and (min-width: 1400px) {
+    width: 700px;
+    border-radius: 700px;
+    height: 700px;
+    position: relative;
+  }
   @media screen and (max-width: 1200px) {
     width: 450px;
-    border-radius: 350px;
+    border-radius: 450px;
     height: 450px;
     align-items: flex-start;
     position: relative;
@@ -197,7 +215,15 @@ const AboutTitle = styled.h2`
   width: 450px;
   margin-bottom: 0;
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1400px) {
+    font-size: 84px;
+    line-height: 80px;
+    width: auto;
+    width: 750px;
+    padding: 0;
+  }
+
+  @media screen and (max-width: 1200px) {
     font-size: 64px;
     line-height: 60px;
     width: auto;

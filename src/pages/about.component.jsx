@@ -64,7 +64,7 @@ const ContCont = styled(motion.div)`
 `
 
 const AboutCont = styled.div`
-  height: auto;
+  height: 70vh;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -74,6 +74,9 @@ const AboutCont = styled.div`
   position: relative;
   gap: 25px;
 
+  @media screen and (min-width: 1400px) {
+  height: 80vh;
+  }
   @media screen and (max-width: 1300px) {
     margin-top: 20vh;
     margin-bottom: 30vh;
@@ -97,6 +100,12 @@ const Circle = styled.div`
   overflow: hidden;
   transform: 1s ease;
 
+  @media screen and (min-width: 1400px) {
+    height: 800px;
+    width: 800px;
+    border-radius: 900px;
+    top: 50%;
+  }
   @media screen and (max-width: 1200px) {
     height: 550px;
     width: 550px;
@@ -165,7 +174,14 @@ const ImageCont = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  z-index: -1;
 
+  @media screen and (min-width: 1400px) {
+    width: 700px;
+    border-radius: 700px;
+    height: 700px;
+    position: relative;
+  }
   @media screen and (max-width: 1200px) {
     width: 450px;
     border-radius: 450px;
@@ -212,7 +228,7 @@ const AboutTitle = styled.h2`
     padding-bottom: 8px;
     font-size: 32px;
     line-height: 32px;
-    width: 350px;
+    max-width: 350px;
   }
 `
 const Desc = styled(PortableText)`
@@ -223,6 +239,6 @@ const Desc = styled(PortableText)`
   @media screen and (max-width: 600px) {
     font-size: 15px;
     line-height: 16px;
-    padding: 0 15px;
+    padding: 0 25px 0 25px;
   }
 `
