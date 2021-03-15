@@ -164,7 +164,7 @@ const AboutContainer = styled.div`
 `
 const ImageCont = styled.div`
   width: 550px;
-  border-radius: 850px;
+  border-radius: 550px;
   height: 550px;
   display: flex;
   justify-content: center;
