@@ -103,7 +103,11 @@ const Circle = styled.div`
   z-index: -1;
   overflow: hidden;
   transform: 1s ease;
-
+ 
+  @media screen and (min-width: 1700px) {
+    background-color: #fbdada !important;
+    top: 44%;
+  }
   @media screen and (min-width: 1400px) {
     height: 800px;
     width: 800px;
