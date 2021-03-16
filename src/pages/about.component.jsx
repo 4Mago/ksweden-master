@@ -35,7 +35,6 @@ const About = ({ about, inView }) => {
     >
       <Circle style={{ backgroundColor: `${color?.mainColor?.hex}` }} />
       <AboutCont
-
       >
         {about.length > 0 
         ? about.map((aboutItem, idx) => (
@@ -64,10 +63,12 @@ function urlFor(source) {
 
 const ContCont = styled(motion.div)`
   position: relative;
-  @media only screen and (max-height: 840px) {
-  padding-bottom: 20vh;
+  @media screen and (max-width: 1400px) {
+    margin-bottom: 20vh;
   }
-
+  @media screen and (max-height: 800px) {
+    margin-bottom: 40vh;
+  }
 `
 
 const AboutCont = styled.div`
@@ -83,10 +84,6 @@ const AboutCont = styled.div`
 
   @media screen and (min-width: 1400px) {
   height: 80vh;
-  }
-  @media screen and (max-width: 1300px) {
-    margin-top: 20vh;
-    margin-bottom: 30vh;
   }
   @media screen and (max-width: 800px) {
     flex-flow: column;
@@ -107,9 +104,6 @@ const Circle = styled.div`
   overflow: hidden;
   transform: 1s ease;
 
-  @media screen and (min-width: 1700px) {
-    background-color: #fbdada !important;
-  }
   @media screen and (min-width: 1400px) {
     height: 800px;
     width: 800px;
@@ -155,8 +149,6 @@ const Circle = styled.div`
 const AboutContainer = styled.div`
   display: flex;
   flex-flow: column;
-  justify-content: center;
-  align-items: center;
   width: 55%;
   text-align: left;
   z-index: 9;
@@ -175,8 +167,7 @@ const AboutContainer = styled.div`
     width: 400px;
     }
   @media screen and (max-width: 500px) {
-    text-align: center;
-    max-width: 380px;
+    padding-left: 20px;
   }
 `
 const ImageCont = styled.div`
@@ -212,8 +203,6 @@ const ImageCont = styled.div`
     width: 350px;
     border-radius: 350px;
     top: 50px;
-    display: none;
-
   }
   @media screen and (max-width: 500px) {
     display: none;
@@ -232,18 +221,18 @@ const AboutTitle = styled.h2`
   max-width: 500px;
   margin-bottom: 0;
 
-
   @media screen and (min-width: 1200px) {
     font-size: 64px;
     line-height: 60px;
     width: 600px;
+    padding: 0;
   }
   @media screen and (max-width: 500px) {
+    text-align: center;
     padding-bottom: 8px;
-    font-size: 28px;
+    font-size: 32px;
     line-height: 32px;
-    max-width: 300px;
-    width: auto;
+    max-width: 350px;
   }
 `
 const Desc = styled(PortableText)`
