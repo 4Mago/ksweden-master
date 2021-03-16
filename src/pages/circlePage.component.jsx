@@ -56,7 +56,7 @@ function urlFor(source) {
 const ContCont = styled(motion.div)`
   position: relative;
   margin-top: 20vh;
-
+  min-height: 100vh;
 `
 
 const AboutCont = styled.div`
@@ -68,9 +68,12 @@ const AboutCont = styled.div`
   margin-bottom: 20vh;
   position: relative;
 
+  @media screen and (max-height: 900px) {
+  height: 100vh;
+  }
+
   @media screen and (min-width: 1400px) {
   height: 80vh;
-
   }
   @media screen and (max-width: 1300px) {
     margin-top: 20vh;
@@ -79,7 +82,7 @@ const AboutCont = styled.div`
   @media screen and (max-width: 800px) {
     flex-flow: column;
     justify-content: center;
-    margin-bottom: 30vh;
+    margin-bottom: 7vh;
   }
 `
 const Circle = styled.div`
@@ -94,11 +97,15 @@ const Circle = styled.div`
   overflow: hidden;
   transform: 1s ease;
 
+  
+  @media screen and (min-width: 1700px) {
+    background-color: #fbdada !important;
+    top: 44%;
+  }
   @media screen and (min-width: 1400px) {
     height: 900px;
     width: 900px;
     border-radius: 900px;
-    top: 50%;
   }
   @media screen and (max-width: 1200px) {
     height: 800px;
@@ -213,6 +220,7 @@ const AboutTitle = styled.h2`
   font-size: 48px;
   line-height: 50px;
   width: 450px;
+  margin-top: 14px;
   margin-bottom: 0;
 
   @media screen and (min-width: 1400px) {
@@ -231,6 +239,13 @@ const AboutTitle = styled.h2`
     padding: 0;
   }
   @media screen and (max-width: 500px) {
+    text-align: center;
+    padding: 8px 0;
+    max-width: 100%;
+    line-height: 35px;
+    font-size: 44px;
+  }
+  @media screen and (max-width: 400px) {
     text-align: center;
     padding: 8px 0;
     font-size: 32px;

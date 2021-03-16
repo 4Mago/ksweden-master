@@ -64,7 +64,7 @@ const Footer = () => {
 
 
   return (
-    <FooterCont style={{ backgroundColor: `${color?.altColor?.hex}` }}>
+    <FooterCont id="Kontakt" style={{ backgroundColor: `${color?.altColor?.hex}` }}>
       <FooterItem>
         <a href="#">
           <img alt="k sweden" src={urlFor(logo.logo).url()}/>

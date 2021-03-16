@@ -109,6 +109,13 @@ const Desc = styled(PortableText)`
   }
 `
 
+const ContCont = styled(motion.div)`
+  @media only screen and (max-height: 840px) {
+  padding-top: 20vh;
+  padding-bottom: 20vh;
+  }
+`
+
 const Overlay = styled.div`
   top: 0;
   left: 0;
@@ -184,7 +191,7 @@ const Services = ({ services, inView }) => {
   }
 
   return (
-    <motion.div
+    <ContCont
       variants={variants}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
@@ -217,7 +224,7 @@ const Services = ({ services, inView }) => {
             ))
           : null}
       </TjanstCont>
-    </motion.div>
+    </ContCont>
   )
 }
 

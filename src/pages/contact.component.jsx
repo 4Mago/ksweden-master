@@ -55,7 +55,7 @@ const Contact = ({ contact, team, inView }) => {
                     </a>
                   </ContactTele>
                 </ContactTextCont>
-                <MapCont id="Kontakt">
+                <MapCont>
                   {team.length > 0
                     ? team.map((teamItem, id) => (
                         <ContactContainer key={id}>

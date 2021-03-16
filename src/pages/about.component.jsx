@@ -64,6 +64,11 @@ function urlFor(source) {
 
 const ContCont = styled(motion.div)`
   position: relative;
+  @media only screen and (max-height: 840px) {
+  padding-top: 20vh;
+  padding-bottom: 20vh;
+  }
+
 `
 
 const AboutCont = styled.div`
@@ -103,6 +108,9 @@ const Circle = styled.div`
   overflow: hidden;
   transform: 1s ease;
 
+  @media screen and (min-width: 1700px) {
+    background-color: #fbdada !important;
+  }
   @media screen and (min-width: 1400px) {
     height: 800px;
     width: 800px;
@@ -224,6 +232,7 @@ const AboutTitle = styled.h2`
   line-height: 50px;
   max-width: 500px;
   margin-bottom: 0;
+
 
   @media screen and (min-width: 1200px) {
     font-size: 64px;
