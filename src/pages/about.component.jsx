@@ -65,7 +65,6 @@ function urlFor(source) {
 const ContCont = styled(motion.div)`
   position: relative;
   @media only screen and (max-height: 840px) {
-  padding-top: 20vh;
   padding-bottom: 20vh;
   }
 
