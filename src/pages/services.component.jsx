@@ -14,7 +14,6 @@ const TjanstCont = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-top: 5%;
   grid-gap: 2em;
   box-sizing: border-box;
   padding: 2.5% 0;
@@ -111,7 +110,6 @@ const Desc = styled(PortableText)`
 
 const ContCont = styled(motion.div)`
   @media only screen and (max-height: 840px) {
-  padding-top: 20vh;
   padding-bottom: 20vh;
   }
 `
