@@ -99,7 +99,6 @@ const Circle = styled.div`
 
   
   @media screen and (min-width: 1700px) {
-    background-color: #fbdada !important;
     top: 44%;
   }
   @media screen and (min-width: 1400px) {
