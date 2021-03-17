@@ -31,6 +31,7 @@ const CirclePage = ({ about, inView }) => {
       variants={variants}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
+      id="Om-oss"
     >
       <Circle style={{ backgroundColor: `${color?.mainColor?.hex}` }} />
       <AboutCont>
@@ -55,8 +56,7 @@ function urlFor(source) {
 
 const ContCont = styled(motion.div)`
   position: relative;
-  margin-top: 20vh;
-  min-height: 100vh;
+  min-height: 80vh;
 `
 
 const AboutCont = styled.div`
@@ -76,8 +76,8 @@ const AboutCont = styled.div`
   height: 80vh;
   }
   @media screen and (max-width: 1300px) {
-    margin-top: 20vh;
-    margin-bottom: 30vh;
+    margin-top: 10vh;
+    margin-bottom: 15vh;
   }
   @media screen and (max-width: 800px) {
     flex-flow: column;
@@ -87,8 +87,8 @@ const AboutCont = styled.div`
 `
 const Circle = styled.div`
   position: absolute;
-  height: 860px;
-  width: 860px;
+  height: 800px;
+  width: 800px;
   left: 50%;
   top: 46%;
   transform: translate(-50%, -50%);
@@ -99,7 +99,6 @@ const Circle = styled.div`
 
   
   @media screen and (min-width: 1700px) {
-    background-color: #fbdada !important;
     top: 44%;
   }
   @media screen and (min-width: 1400px) {
