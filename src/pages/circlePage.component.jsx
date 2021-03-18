@@ -57,6 +57,12 @@ function urlFor(source) {
 const ContCont = styled(motion.div)`
   position: relative;
   min-height: 70vh;
+  @media screen and (max-width: 1600px) {
+    margin-bottom: 10em;
+    }
+  @media screen and (max-width: 1200px) {
+    margin-bottom: 0;
+    }
 `
 
 const AboutCont = styled.div`
@@ -65,20 +71,18 @@ const AboutCont = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 20vh;
-  margin-bottom: 20vh;
+  margin-top: 10em;
+  margin-bottom: 10em;
   position: relative;
 
-  @media screen and (max-height: 900px) {
-  height: 100%;
-  }
 
-  @media screen and (min-width: 1400px) {
-  height: 80vh;
-  }
+
   @media screen and (max-width: 1300px) {
     margin-top: 10vh;
-    margin-bottom: 15vh;
+    margin-bottom: 5em;
+  }
+  @media screen and (max-height: 900px) {
+  height: 100%;
   }
   @media screen and (max-width: 800px) {
     flex-flow: column-reverse;
@@ -154,6 +158,7 @@ const AboutContainer = styled.div`
     width: 700px;
     padding: 0 2% 0 0;
   }
+
   @media screen and (max-width: 1200px) {
     width: 450px;
   }
@@ -169,19 +174,19 @@ const AboutContainer = styled.div`
   }
 `
 const ImageCont = styled.div`
-  width: 550px;
-  border-radius: 550px;
-  height: 550px;
+    width: 700px;
+    border-radius: 700px;
+    height: 700px;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  position: relative;
 
-  @media screen and (min-width: 1650px) {
-    width: 700px;
-    border-radius: 700px;
-    height: 700px;
-    position: relative;
+  @media screen and (max-width: 1600px) {
+    width: 550px;
+    border-radius: 550px;
+    height: 550px;
   }
   @media screen and (max-width: 1200px) {
     width: 450px;
