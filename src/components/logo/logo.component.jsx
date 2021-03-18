@@ -22,7 +22,33 @@ const StyledLogo = styled.img`
     top: 26vh;
     width: 265px;
   }
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1100px) {
+    top: 26vh;
+    width: 265px;
+  }
+  @media screen and (max-width: 1100px) {
+    top: 26vh;
+    width: 265px;
+  }
+  //height!!!
+  @media screen and (max-height: 500px) {
+    width: 85px;
+    height: auto;
+    top: 32px;
+    left: 85%;
+    z-index: 100;
+    position: fixed;
+  }
+  @media screen and (max-width: 900px) {
+    width: 200px;
+    top: 20vh;
+  }
+  @media screen and (max-width: 700px) {
+    width: 150px;
+    top: 8em;
+    left: 77%;
+  }
+  @media screen and (max-width: 500px) {
     width: 85px;
     height: auto;
     top: 32px;

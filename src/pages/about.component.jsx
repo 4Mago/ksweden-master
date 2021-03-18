@@ -66,7 +66,7 @@ const ContCont = styled(motion.div)`
     margin-bottom: 20vh;
   }
   @media screen and (max-height: 800px) {
-    margin-bottom: 40vh;
+    margin-bottom: 5em;
   }
 `
 
@@ -76,18 +76,21 @@ const AboutCont = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-
   position: relative;
   gap: 25px;
 
 
   @media screen and (max-height: 800px) {
-    margin-bottom: 10em;
-    margin-top: 10em;
+    margin-bottom: 6em;
+    margin-top: 4em;
   }
   @media screen and (max-width: 800px) {
     flex-flow: column;
     justify-content: center;
+  }
+  @media screen and (max-height: 450px) {
+    margin-bottom: 0;
+    margin-top: 0;
   }
 `
 const Circle = styled.div`
@@ -168,6 +171,7 @@ const AboutContainer = styled.div`
     width: 400px;
     }
   @media screen and (max-width: 500px) {
+    padding: 5px 0;
     padding-left: 20px;
   }
 `
@@ -205,8 +209,10 @@ const ImageCont = styled.div`
     border-radius: 350px;
     top: 50px;
   }
-  @media screen and (max-width: 500px) {
-    display: none;
+  @media screen and (max-width: 600px) {
+    height: 250px;
+    width: 250px;
+    border-radius: 250px;
   }
 `
 

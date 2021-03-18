@@ -87,6 +87,7 @@ const AboutCont = styled.div`
   @media screen and (max-width: 800px) {
     flex-flow: column-reverse;
     justify-content: center;
+    margin-top: 0;
     gap: 50px;
   }
 `
@@ -202,8 +203,6 @@ const ImageCont = styled.div`
     height: 350px;
   }
   @media screen and (max-width: 800px) {
-    width: 250px;
-    height: 250px;
     top: 50px;
   }
   @media screen and (max-width: 500px) {
@@ -265,5 +264,10 @@ const Desc = styled(PortableText)`
     font-size: 15px;
     line-height: 16px;
     padding: 0 15px;
+  }
+  @media screen and (max-width: 450px) {
+    font-size: 15px;
+    line-height: 16px;
+    padding: 0;
   }
 `

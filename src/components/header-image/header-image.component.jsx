@@ -16,7 +16,7 @@ const StyledHeaderImage = styled.div`
 	height: 100vh;
 	position: relative;
 	@media only screen and (max-width: 800px) {
-		height: 70vh;
+		height: 78vh;
 	}
 `
 
@@ -30,7 +30,7 @@ const Thumbnail = styled.div`
 	top: 0;
 	z-index: 0;
 	@media only screen and (max-width: 800px) {
-		height: 70vh;
+		height: 78vh;
 	}
 `
 const Title = styled(BlockContent)`
@@ -38,31 +38,49 @@ const Title = styled(BlockContent)`
 	padding-left: 6rem;
 	width: 70%;
 	padding-top: 20%;
-	max-width: 700px;
+	max-width: 900px;
 	height: auto;
 	text-align: left;
 	text-decoration: none;
-	font-size: 64px;
 	z-index: 1;
+	font-style: italic;
+
 
 	li {
 		list-style-type: none;
 		text-decoration: none;
 	}
+	@media screen and (min-width: 1500px) {
+		margin-bottom: 32px;
+	}
+	@media screen and (max-width: 1000px) {
+		margin-bottom: 0;
+	}
 	@media screen and (max-width: 800px) {
 		padding-top: 50px;
 		font-size: 42px;
 		width: 80%;
+		max-width: 700px;
+	}
+	@media screen and (max-height: 700px) {
+		padding-top: 15%;
+		font-size: 42px;
+	}
+	@media screen and (max-height: 600px) {
+		padding-top: 12%;
+		font-size: 42px;
 	}
 	@media screen and (max-width: 500px) {
 		font-size: 18px;
-		width: 80%;
 		padding-left: 3.5rem;
 	}
 	@media screen and (max-width: 350px) {
 		font-size: 18px;
 		width: 80%;
-		padding-left: 3.5rem;
+		padding-left: 2.5rem;
+		ul { 
+			padding: 0 0 0 20px;
+			}
 	}
 `
 const Overlay = styled.div`
@@ -74,7 +92,7 @@ const Overlay = styled.div`
 	top: 0;
 	z-index: 0;
 	@media only screen and (max-width: 800px) {
-		height: 75vh;
+		height: 83vh;
 	}
 `
 

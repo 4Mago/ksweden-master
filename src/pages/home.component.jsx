@@ -32,14 +32,24 @@ const HomeCarousel = styled(Carousel)`
   p,
   ul,
   h1 {
-    font-size: 40px;
+    font-size: 64px;
 
 
-  @media only screen and (min-width: 1300px) {
-    font-size: 45px;
+  @media only screen and (max-width: 1300px) {
+    font-size: 54px;
   }
-  @media only screen and (max-width: 1000px) {
-    font-size: 35px;
+  @media only screen and (max-width: 1100px) {
+    font-size: 46px;
+  }
+  @media only screen and (max-width: 800px) {
+    font-size: 36px;
+    p {
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }
+    ul {
+      font-size: 42px;
+    }
   }
   @media only screen and (max-width: 600px) {
     font-size: 32px;
