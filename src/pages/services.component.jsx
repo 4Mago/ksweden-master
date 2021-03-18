@@ -100,6 +100,8 @@ const Desc = styled(PortableText)`
   position: relative;
   z-index: 1;
   transition: all 0.2s ease-in-out;
+  text-align: left;
+
 
   ul {
     text-align: left;
@@ -110,7 +112,7 @@ const Desc = styled(PortableText)`
 
 const ContCont = styled(motion.div)`
   @media only screen and (max-height: 840px) {
-  padding-bottom: 20vh;
+  padding-bottom: 20em;
   }
 `
 

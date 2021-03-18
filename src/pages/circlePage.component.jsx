@@ -56,20 +56,21 @@ function urlFor(source) {
 
 const ContCont = styled(motion.div)`
   position: relative;
-  min-height: 80vh;
+  min-height: 70vh;
 `
 
 const AboutCont = styled.div`
-  height: 70vh;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-top: 20vh;
   margin-bottom: 20vh;
   position: relative;
 
   @media screen and (max-height: 900px) {
-  height: 100vh;
+  height: 100%;
   }
 
   @media screen and (min-width: 1400px) {
@@ -80,15 +81,15 @@ const AboutCont = styled.div`
     margin-bottom: 15vh;
   }
   @media screen and (max-width: 800px) {
-    flex-flow: column;
+    flex-flow: column-reverse;
     justify-content: center;
-    margin-bottom: 7vh;
+    gap: 50px;
   }
 `
 const Circle = styled.div`
   position: absolute;
-  height: 800px;
-  width: 800px;
+  height: 860px;
+  width: 860px;
   left: 50%;
   top: 46%;
   transform: translate(-50%, -50%);
@@ -99,7 +100,6 @@ const Circle = styled.div`
 
   
   @media screen and (min-width: 1700px) {
-    top: 44%;
   }
   @media screen and (min-width: 1400px) {
     height: 900px;
@@ -112,7 +112,7 @@ const Circle = styled.div`
     border-radius: 800px;
     top: 34%;
   }
-  @media screen and (max-width: 1025px) {
+  @media screen and (max-width: 800px) {
     height: 700px;
     width: 700px;
     border-radius: 800px;
@@ -139,7 +139,7 @@ const Circle = styled.div`
     width: 580px;
     top: auto;
     border-radius: 500px;
-    top: 52%;
+    top: 46%;
   }
 `
 const AboutContainer = styled.div`
@@ -193,19 +193,18 @@ const ImageCont = styled.div`
   }
   @media screen and (max-width: 1025px) {
     width: 350px;
-    border-radius: auto;
+    border-radius: 350px;
     height: 350px;
   }
   @media screen and (max-width: 800px) {
-    height: 550px;
-
-    width: auto;
-    border-radius: 100%;
-    height: auto;
+    width: 250px;
+    height: 250px;
     top: 50px;
   }
   @media screen and (max-width: 500px) {
-    display: none;
+    width: 250px;
+    border-radius: 250px;
+    height: 250px;
   }
 `
 

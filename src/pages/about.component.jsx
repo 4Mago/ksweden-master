@@ -71,24 +71,23 @@ const ContCont = styled(motion.div)`
 `
 
 const AboutCont = styled.div`
-  height: 70vh;
+  height: auto;
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 20vh;
-  margin-top: 10vh;
+
   position: relative;
   gap: 25px;
 
-  @media screen and (min-width: 1400px) {
-  height: 80vh;
+
+  @media screen and (max-height: 800px) {
+    margin-bottom: 10em;
+    margin-top: 10em;
   }
   @media screen and (max-width: 800px) {
     flex-flow: column;
     justify-content: center;
-    margin-top: 20vh;
-    margin-bottom: 30vh;
   }
 `
 const Circle = styled.div`
@@ -232,9 +231,10 @@ const AboutTitle = styled.h2`
   @media screen and (max-width: 500px) {
     text-align: center;
     padding-bottom: 8px;
+    text-indent: 5%;
     font-size: 32px;
     line-height: 32px;
-    max-width: 350px;
+    max-width: 85%;
   }
 `
 const Desc = styled(PortableText)`
@@ -245,6 +245,13 @@ const Desc = styled(PortableText)`
   @media screen and (max-width: 600px) {
     font-size: 15px;
     line-height: 16px;
-    padding: 0 25px 0 25px;
+    padding: 0 25px;
+    width: 80%;
+  }
+  @media screen and (max-width: 320px) {
+    font-size: 15px;
+    line-height: 16px;
+    padding: 0 45px;
+    width: 70%;
   }
 `
