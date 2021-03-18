@@ -90,6 +90,9 @@ const AboutCont = styled.div`
     margin-top: 0;
     gap: 50px;
   }
+  @media screen and (max-width: 450px) {
+    margin-top: 4em;
+  }
 `
 const Circle = styled.div`
   position: absolute;
