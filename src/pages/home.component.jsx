@@ -32,11 +32,18 @@ const HomeCarousel = styled(Carousel)`
   p,
   ul,
   h1 {
+    
     font-size: 64px;
 
-
-  @media only screen and (max-width: 1300px) {
+  @media only screen and (max-width: 1400px) {
     font-size: 54px;
+    p {
+      margin-top: 15px !important;
+      margin-bottom: 15px !important;
+    }
+    ul {
+      font-size: 64px;
+    }
   }
   @media only screen and (max-width: 1100px) {
     font-size: 46px;
@@ -44,8 +51,8 @@ const HomeCarousel = styled(Carousel)`
   @media only screen and (max-width: 800px) {
     font-size: 36px;
     p {
-      margin-top: 25px;
-      margin-bottom: 15px;
+      margin-top: 8px !important;
+      margin-bottom: 8px !important;
     }
     ul {
       font-size: 42px;
@@ -117,7 +124,7 @@ const Home = ({ home, about, services, contact, team, circlePage }) => {
               />
             ))}
           </HomeCarousel>
-        ) : null}
+        ) : null && console.log('hello')}
       </HomeContainer>
       <PageContainer
         exit={{ opacity: 0 }}
@@ -126,16 +133,15 @@ const Home = ({ home, about, services, contact, team, circlePage }) => {
         transition={transition}
       >
         <ScrollDetect>
-          <CirclePage about={circlePage} />
-        </ScrollDetect>
-        <ScrollDetect>
-          <About about={about} />
-        </ScrollDetect>
-        <ScrollDetect>
-          <Services services={services} />
-        </ScrollDetect>
-        <ScrollDetect>
-          <Contact contact={contact} team={team} />
+
+              <CirclePage about={circlePage} />
+
+              <About about={about} />
+
+              <Services services={services} />
+
+              <Contact contact={contact} team={team} />
+
         </ScrollDetect>
       </PageContainer>
     </ContCont>
