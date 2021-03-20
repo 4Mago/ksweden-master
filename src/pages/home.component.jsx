@@ -135,14 +135,16 @@ const Home = ({ home, about, services, contact, team, circlePage }) => {
         <ScrollDetect>
 
               <CirclePage about={circlePage} />
-
+</ScrollDetect>
+<ScrollDetect>
               <About about={about} />
-
+</ScrollDetect>
+<ScrollDetect>
               <Services services={services} />
-
+</ScrollDetect>
+<ScrollDetect>
               <Contact contact={contact} team={team} />
-
-        </ScrollDetect>
+</ScrollDetect>
       </PageContainer>
     </ContCont>
   )
