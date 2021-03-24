@@ -18,6 +18,7 @@ const variants = {
 
 const Contact = ({ contact, team, inView }) => {
   const [color, setColor] = useState("")
+  const [logo, setLogo] = useState("")
 
   useEffect(() => {
     const colorQuery = `*[_type == "colorScheme"]`
@@ -30,6 +31,19 @@ const Contact = ({ contact, team, inView }) => {
 
     return
   }, [])
+
+  useEffect(() => {
+    const logoQuery = `*[_type == "navigation"]`
+
+    sanityClient.fetch(logoQuery).then((logo) => {
+      logo.forEach((logo) => {
+        setLogo(logo)
+      })
+    })
+
+    return
+  }, [])
+
 
   return (
     <ContactContainer>
@@ -46,7 +60,10 @@ const Contact = ({ contact, team, inView }) => {
                 style={{ backgroundColor: `${color?.mainColor?.hex}` }}
               >
                 <ContactTextCont>
-                  <ContactTitle>{contactItem.title}</ContactTitle>
+                  <ContactTitle>
+                    {contactItem.title}
+                    <StyledLogo src={urlFor(logo.logo).quality(60).auto('format').url()} />
+                  </ContactTitle>
                   <ContactText blocks={contactItem.text} />
                   <ContactTele>
                     <PortableText>{contactItem.text}</PortableText>
@@ -65,13 +82,12 @@ const Contact = ({ contact, team, inView }) => {
                             <TextOverlay>
                               {teamItem.name}
                               <br />
-                              <TextOverlay2>{teamItem.profession}</TextOverlay2>
-                            
+                              <TextOverlay2>{teamItem.role}</TextOverlay2>
                             </TextOverlay>
                           </ImageCont>
                           <TextDivs>
-                            <Text><b>Telefon:</b> {teamItem.phone} </Text>
-                            <Text> <b>Email:</b> {teamItem.email} </Text>
+                            <Text> <b>Telefon:</b> <A href={`mailto:${teamItem.phone}`}>{teamItem.phone}</A> </Text>
+                            <Text> <b>E-post:</b> <A href={`mailto:${teamItem.email}`}> {teamItem.email} </A> </Text>
                             <Text2 blocks={teamItem.description} />
                           </TextDivs>
                         </ContactContainer>
@@ -113,14 +129,17 @@ const ContactTitle = styled.h2`
   font-family: "Bebas Neue", sans-serif;
   font-size: 64px;
   line-height: 50px;
-  margin-bottom: 12%;
-  @media screen and (max-width: 800px) {
-    font-size: 48px;
+  margin-bottom: 3%;
+  display: flex;
+  justify-content: space-between;
+  @media screen and (max-width: 600px) {
+   
   }
 `
 
 const Overlay = styled.div`
-  top: 0;
+  width: 97%;
+  top: 180px;
   left: 0;
   bottom: 0;
   right: 0;
@@ -139,7 +158,7 @@ const TextOverlay = styled.p`
 `
 const TextOverlay2 = styled.p`
 font-family: 'bebas neue';
-margin: 0;
+margin: 5px 0 0 0;
 `
 
 const ContactText = styled(PortableText)`
@@ -151,6 +170,39 @@ const ContactTextCont = styled.div`
   margin-bottom: 10px;
   @media screen and (max-width: 900px) {
   }
+`
+
+const StyledLogo = styled.img`
+  width: 300px;
+  height: auto;
+  z-index: 100;
+  box-sizing: border-box;
+  position: relative;
+  bottom: 70px;
+  cursor: default;
+  @media screen and (max-width: 1300px) {
+    width: 265px;
+  }
+  @media screen and (max-width: 1100px) {
+    width: 245px;
+  }
+  @media screen and (max-width: 900px) {
+    width: 225px;
+    bottom: 55px;
+  }
+  @media screen and (max-width: 700px) {
+    width: 150px;
+    bottom: 45px;
+  }
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
+
+`
+
+const A = styled.a`
+  text-decoration: none;
+  color: #414141;
 `
 
 const TextDivs = styled.div`
@@ -189,13 +241,14 @@ const ImageCont = styled.div`
   align-items: flex-end;
   position: relative;
   padding: 5px;
+  cursor: pointer;
 `
 
 const ImageDiv = styled.div`
 
   width: 280px;
   min-width: 280px;
-  height: 385px;
+  height: 360px;
 
   @media screen and (max-width: 1600px) {
   }
@@ -237,7 +290,7 @@ const Text = styled.p`
 `
 const Text2 = styled(PortableText)`
   height: 10px;
-  text-align: flex;
+  font-size: 8px;
   z-index: 99;
 `
 
@@ -253,5 +306,5 @@ const ContactContainer = styled.div`
 `
 const Span = styled.div`
   width: 100%;
-  height: 20px;
+  height: 25px;
 `

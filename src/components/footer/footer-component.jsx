@@ -23,7 +23,7 @@ const FooterCont = styled.div`
   z-index: 2;
   a {
     text-decoration: none;
-    color: black;
+    color: darkgray;
   }
 `
 const FooterItem = styled.div`
@@ -71,7 +71,7 @@ const Footer = () => {
         </a>
       </FooterItem>
       <FooterItem>
-        <Link to="./integritets-policy">integritetspolicy</Link>
+        <Link to="./integritets-policy">Integritetspolicy</Link>
       </FooterItem>
     </FooterCont>
   )

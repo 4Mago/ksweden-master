@@ -112,7 +112,7 @@ const Desc = styled(PortableText)`
 
 const ContCont = styled(motion.div)`
   @media only screen and (max-height: 840px) {
-  padding-bottom: 20em;
+  padding-bottom: 8em;
   }
 `
 
