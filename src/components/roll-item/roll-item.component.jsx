@@ -58,7 +58,7 @@ const RollItem = ({roll}) => {
         <Cont className="icon">
             <TitleCont>
                 <IconDiv>
-                    <Icon className="icon-img" src={urlFor(roll.ikon).url()} />
+                    <Icon className="icon-img" src={urlFor(roll.ikon).quality(60).auto('format').url()} />
                 </IconDiv>
                 <Title>{roll.name}</Title>
               

@@ -6,7 +6,6 @@ import { Carousel } from "react-responsive-carousel"
 import Services from "./services.component"
 import About from "./about.component"
 import Contact from "./contact.component"
-import ReactGA from "react-ga"
 import CirclePage from "./circlePage.component"
 import PortableText from "@sanity/block-content-to-react"
 import { motion } from "framer-motion"
@@ -99,9 +98,7 @@ const PageContainer = styled(motion.div)`
 const transition = { duration: 0.6, ease: [0.43, 0.013, 0.23, 0.96] }
 
 const Home = ({ home, about, services, contact, team, circlePage }) => {
-  useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search)
-  }, [])
+
   const settings = {
     autoPlay: true,
     stopOnHover: false,
@@ -116,15 +113,16 @@ const Home = ({ home, about, services, contact, team, circlePage }) => {
       <HomeContainer id="home">
         {home.length > 0 ? (
           <HomeCarousel {...settings}>
-            {home.map((homeItem, idx) => (
+            {home.map((homeItem, idx) => {
+              return(
               <HeaderImage 
                 key={idx}
                 slider={homeItem}
                 blocks={homeItem.heroText}
               />
-            ))}
+            )})}
           </HomeCarousel>
-        ) : null && console.log('hello')}
+        ) : null}
       </HomeContainer>
       <PageContainer
         exit={{ opacity: 0 }}
@@ -133,18 +131,17 @@ const Home = ({ home, about, services, contact, team, circlePage }) => {
         transition={transition}
       >
         <ScrollDetect>
-
               <CirclePage about={circlePage} />
-</ScrollDetect>
-<ScrollDetect>
+      </ScrollDetect>
+      <ScrollDetect>
               <About about={about} />
-</ScrollDetect>
-<ScrollDetect>
+      </ScrollDetect>
+      <ScrollDetect>
               <Services services={services} />
-</ScrollDetect>
-<ScrollDetect>
+      </ScrollDetect>
+      <ScrollDetect>
               <Contact contact={contact} team={team} />
-</ScrollDetect>
+      </ScrollDetect>
       </PageContainer>
     </ContCont>
   )

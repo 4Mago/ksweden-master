@@ -27,7 +27,7 @@ const LogoCont = styled.div`
 const ClientLogo = ({navigation}) => {
     return (
         <LogoCont>
-             <StyledLogo src={urlFor(navigation.logga).url()}/>
+             <StyledLogo src={urlFor(navigation.logga).quality(60).auto('format').url()}/>
         </LogoCont>
     )
 }

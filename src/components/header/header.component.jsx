@@ -34,7 +34,7 @@ const Header = () => {
 
     return
   }, [])
-  console.log(header)
+
   return (
     <HeaderCont ref={node}>
       <Burger open={open} setOpen={setOpen} />

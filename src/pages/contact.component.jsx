@@ -60,10 +60,20 @@ const Contact = ({ contact, team, inView }) => {
                     ? team.map((teamItem, id) => (
                         <ContactContainer key={id}>
                           <ImageCont>
-                            <Image src={urlFor(teamItem.image).url()} />
+                            <ImageDiv><Image src={urlFor(teamItem.image).quality(60).auto('format').url()} /></ImageDiv>
+                            <Overlay />
+                            <TextOverlay>
+                              {teamItem.name}
+                              <br />
+                              <TextOverlay2>{teamItem.profession}</TextOverlay2>
+                            
+                            </TextOverlay>
                           </ImageCont>
-                          <Text> Telefon: {teamItem.phone} </Text>
-                          <Text> Email: {teamItem.email} </Text>
+                          <TextDivs>
+                            <Text><b>Telefon:</b> {teamItem.phone} </Text>
+                            <Text> <b>Email:</b> {teamItem.email} </Text>
+                            <Text2 blocks={teamItem.description} />
+                          </TextDivs>
                         </ContactContainer>
                       ))
                     : null}
@@ -89,9 +99,9 @@ const ContactCont = styled.div`
   padding: 5%;
   box-sizing: border-box;
   align-items: flex-start;
+  flex-flow: column wrap;
 
   @media screen and (max-width: 900px) {
-    flex-flow: column wrap;
     justify-content: center;
     align-items: center;
     height: auto;
@@ -109,55 +119,103 @@ const ContactTitle = styled.h2`
   }
 `
 
+const Overlay = styled.div`
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9;
+  background-image: linear-gradient(to bottom, transparent, white);
+  position: absolute;
+  pointer-events: none;
+`
+
+const TextOverlay = styled.p`
+  font-size: 20px;
+  padding: 5px 0 0 8px;
+  position: absolute;
+  text-align: left;
+  z-index: 99;
+`
+const TextOverlay2 = styled.p`
+font-family: 'bebas neue';
+margin: 0;
+`
+
 const ContactText = styled(PortableText)`
   width: 95%;
 `
 const ContactTextCont = styled.div`
-  width: 50%;
+  width: 100%;
+  max-width: 760px;
   margin-bottom: 10px;
   @media screen and (max-width: 900px) {
-    width: 100%;
+  }
+`
+
+const TextDivs = styled.div`
+  display: flex;
+  flex-flow: column;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
+  box-sizing: border-box;
+  padding: 0 0 2% 2%;
+  width: 66%;
+
+  @media screen and (max-width: 1200px) {
+    padding: 15px;
+    width: 75%;
+
+  }
+
+  @media screen and (max-width: 900px) {
+    padding: 15px;
+    width: 90%;
+
+  }
+
+  @media screen and (max-width: 900px) {
+    padding: 15px;
+    width: 90%;
+
   }
 `
 
 const ImageCont = styled.div`
   display: flex;
   flex-flow: row;
-  justify-content: center;
-  align-items: center;
-  object-fit: cover;
+  justify-content: flex-start;
+  align-items: flex-end;
+  position: relative;
+  padding: 5px;
 `
-const Image = styled.img`
-  width: 250px;
-  height: 300px;
-  padding: 15%;
-  padding-bottom: 15px;
+
+const ImageDiv = styled.div`
+
+  width: 280px;
+  min-width: 280px;
+  height: 385px;
 
   @media screen and (max-width: 1600px) {
-    padding: 5%;
   }
   @media screen and (max-width: 1400px) {
-    width: auto;
-    max-width: 250px;
-    height: auto;
-    max-height: 300px;
-    padding: 2%;
   }
   @media screen and (max-width: 900px) {
-    padding-top: 0;
   }
+`
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
 `
 
 const MapCont = styled.div`
-  width: 50%;
+  width: 100%;
   display: flex;
-  @media screen and (max-width: 1300px) {
-    flex-flow: column;
-      }
-  @media screen and (max-width: 900px) {
-    width: 100%;
-    flex-flow: row;
-  }
+  justify-content: space-around;
   @media screen and (max-width: 500px) {
     width: 100%;
     flex-flow: column;
@@ -176,12 +234,22 @@ const ContactLink = styled.a`
 `
 const Text = styled.p`
   height: 10px;
-  text-align: center;
+`
+const Text2 = styled(PortableText)`
+  height: 10px;
+  text-align: flex;
+  z-index: 99;
 `
 
 const ContactContainer = styled.div`
   height: auto;
   width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: flex-start;
+  position: relative;
 `
 const Span = styled.div`
   width: 100%;

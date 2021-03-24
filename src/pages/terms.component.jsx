@@ -12,9 +12,7 @@ const Cont = styled.div`
 const Text = styled.div``
 
 const Terms = () => {
-	// useEffect(() => {
-	//   ReactGA.pageview(window.location.pathname + window.location.search)
-	// }, [])
+
 	return (
 		<Cont>
 			<h1>Integritetspolicy</h1>

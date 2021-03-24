@@ -75,7 +75,7 @@ const TextCont = styled.div`
 const RollHeader = ({ headerImg, headerTitle, headerDesc }) => {
     return (
         <HeaderCont>
-          <Thumbnail style={{backgroundImage:`url(${urlFor(headerImg).url()})`}}> 
+          <Thumbnail style={{backgroundImage:`url(${urlFor(headerImg).quality(60).auto('format').url()})`}}> 
           <Overlay />
           <Title>{headerTitle}</Title>
           <TextCont>

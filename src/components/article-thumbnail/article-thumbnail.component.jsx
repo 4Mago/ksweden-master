@@ -45,7 +45,7 @@ const LinkContainer = styled.div`
 const ArticleThumbnail = ({article}) => {
     return (
         <ArticleLink to={`/artikel/${article.titel}`}>
-             <Thumbnail style={{backgroundImage: `url(${urlFor(article.thumbnail).url()})`}}/>
+             <Thumbnail style={{backgroundImage: `url(${urlFor(article.thumbnail).quality(60).auto('format').url()})`}}/>
              <LinkContainer>
              <ArticleText ><span>{article.titel}<Arrow alt="arrow" src="left-arrow.svg" /></span>
              </ArticleText>

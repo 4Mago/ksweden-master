@@ -38,8 +38,8 @@ const About = ({ about, inView }) => {
         {about.length > 0 
         ? about.map((aboutItem, idx) => (
           <>
-        <ImageCont>
-          <Image src={urlFor(aboutItem.image).url()} />
+        <ImageCont >
+          <Image src={urlFor(aboutItem.image).quality(60).auto('format').url()} />
         </ImageCont>
         <AboutContainer key={idx}>
           <AboutTitle>{aboutItem.title}</AboutTitle>

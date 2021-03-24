@@ -40,7 +40,7 @@ const CirclePage = ({ about, inView }) => {
           <Desc blocks={about.description} />
         </AboutContainer>
         <ImageCont>
-          <Image src={urlFor(about.image).url()} />
+          <Image src={urlFor(about.image).quality(60).auto('format').url()} />
         </ImageCont>
       </AboutCont>
     </ContCont>

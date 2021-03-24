@@ -85,7 +85,7 @@ const Logo = ({ setOpen }) => {
       }}
       to="/"
     >
-      <StyledLogo src={urlFor(logo.logo).url()} />
+      <StyledLogo src={urlFor(logo.logo).quality(60).auto('format').url()} />
     </Link>
   )
 }

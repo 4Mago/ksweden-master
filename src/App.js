@@ -12,19 +12,6 @@ const HomePage = lazy(() => import('./pages/home.component.jsx'))
 const Terms = lazy(() => import('./pages/terms.component.jsx'))
 
 function App() {
-	// const [cookie, cookieTrigger] = useState(false)
-	// useEffect(() => {
-	//   if (cookie) {
-	//     ReactGA.initialize("UA-159437523-1")
-	//     window.localStorage.setItem("cookieAccepted", true)
-	//     ReactGA.pageview(window.location.pathname + window.location.search)
-	//   }
-	// }, [cookie])
-	// useEffect(() => {
-	//   window.localStorage.cookieAccepted
-	//     ? cookieTrigger(true)
-	//     : cookieTrigger(false)
-	// }, [])
 
 	const [home, setHome] = useState('')
 	const [about, setAbout] = useState('')

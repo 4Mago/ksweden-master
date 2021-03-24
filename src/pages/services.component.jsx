@@ -207,7 +207,7 @@ const Services = ({ services, inView }) => {
                 <ReadMoreContainer id={"readMore" + idx}>
                   <ServicesImage
                     id={"image" + idx}
-                    src={urlFor(servicesItem.thumbnail).url()}
+                    src={urlFor(servicesItem.thumbnail).quality(60).auto('format').url()}
                   />
                   <ContDesc id={`content` + idx}>
                     <Overlay id={`overlay` + idx} />
