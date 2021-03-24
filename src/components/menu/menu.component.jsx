@@ -29,6 +29,7 @@ const StyledMenu = styled.nav`
     min-width: 90%;
     width: 100%;
     padding: 0;
+    padding-bottom: 15px;
   }
 `
 
@@ -63,7 +64,7 @@ right: 0;
 top: 0;
 
 @media screen and (max-width: ${({ theme }) => theme.mobile}) {
-    height: 152px;
+    height: 167px;
   }
 `
 
