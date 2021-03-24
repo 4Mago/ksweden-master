@@ -13,7 +13,7 @@ const StyledBurger = styled.button`
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 100;
+  z-index: 99999999;
   position: fixed;
 
   @media screen and (max-width: 600px) {

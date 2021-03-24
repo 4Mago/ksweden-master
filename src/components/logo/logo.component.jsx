@@ -16,7 +16,6 @@ const StyledLogo = styled.img`
   top: 25vh;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 100;
   cursor: default;
   @media screen and (max-width: 1300px) {
     top: 26vh;
@@ -36,8 +35,6 @@ const StyledLogo = styled.img`
     height: auto;
     top: 32px;
     left: 85%;
-    z-index: 100;
-    position: fixed;
   }
   @media screen and (max-width: 900px) {
     width: 200px;
@@ -54,7 +51,6 @@ const StyledLogo = styled.img`
     top: 32px;
     left: 85%;
     z-index: 100;
-    position: fixed;
   }
 `
 

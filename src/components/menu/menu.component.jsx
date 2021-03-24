@@ -20,7 +20,7 @@ const StyledMenu = styled.nav`
   padding: 3rem 6rem;
   position: fixed;
   min-width: 300px;
-  z-index: 99;
+  z-index: 999999;
   top: 0;
   left: 0;
   transition: transform 0.3s ease-in-out;
@@ -45,7 +45,8 @@ const NavLink = styled(Link)`
 
   @media screen and (max-width: ${({ theme }) => theme.mobile}) {
     font-size: 1rem;
-    text-align: center;
+    text-align: left;
+    text-indent: 120px;
     margin: 5px 0;
   }
 
@@ -60,6 +61,10 @@ height: 230px;
 position: absolute;
 right: 0;
 top: 0;
+
+@media screen and (max-width: ${({ theme }) => theme.mobile}) {
+    height: 152px;
+  }
 `
 
 const SPAN = styled.div`
