@@ -62,7 +62,7 @@ const Contact = ({ contact, team, inView }) => {
                 <ContactTextCont>
                   <ContactTitle>
                     {contactItem.title}
-                    <StyledLogo src={urlFor(logo.logo).quality(60).auto('format').url()} />
+                    <StyledLogo src={urlFor(logo.logo3).quality(60).auto('format').url()} />
                   </ContactTitle>
                   <ContactText blocks={contactItem.text} />
                   <ContactTele>
@@ -129,11 +129,12 @@ const ContactTitle = styled.h2`
   font-family: "Bebas Neue", sans-serif;
   font-size: 64px;
   line-height: 50px;
+  height: 200px;
   margin-bottom: 3%;
   display: flex;
   justify-content: space-between;
   @media screen and (max-width: 600px) {
-   
+  font-size: 48px;
   }
 `
 
@@ -174,31 +175,35 @@ const ContactTextCont = styled.div`
 
 const StyledLogo = styled.img`
   width: 300px;
-  height: auto;
+  height: 313px;
   z-index: 100;
   box-sizing: border-box;
   position: relative;
   bottom: 70px;
-  left: 200px;
+  left: 270px;
   cursor: default;
+  
   @media screen and (max-width: 1300px) {
     width: 265px;
+    height: 277px;
     left: 100px;
   }
   @media screen and (max-width: 1100px) {
     width: 245px;
+    height: 256px;
     left: 0;
   }
   @media screen and (max-width: 900px) {
     width: 225px;
+    height: 235px;
     bottom: 55px;
   }
   @media screen and (max-width: 700px) {
-    width: 150px;
+    width: 200px;
+    height: 209px;
     bottom: 45px;
   }
   @media screen and (max-width: 500px) {
-    display: none;
   }
 
 `

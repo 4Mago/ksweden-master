@@ -3,6 +3,12 @@ import sanityClient from "../../Client"
 import styled from "styled-components"
 import { bool } from "prop-types"
 import { HashLink as Link } from "react-router-hash-link"
+import imageUrlBuilder from '@sanity/image-url'
+
+const builder = imageUrlBuilder(sanityClient)
+function urlFor(source) {
+  return builder.image(source)
+}
 
 const StyledMenu = styled.nav`
   display: flex;
@@ -48,9 +54,24 @@ const NavLink = styled(Link)`
   }
 `
 
+const StyledLogo = styled.img`
+z-index: 999;
+height: 230px;
+position: absolute;
+right: 0;
+top: 0;
+`
+
+const SPAN = styled.div`
+display: flex;
+justify-content: flex-end;
+height: 1.25rem;
+`
+
 const Menu = ({ open, setOpen }) => {
   const [navigation, setNavigation] = useState("")
   const [color, setColor] = useState("")
+
 
   useEffect(() => {
     const colorQuery = `*[_type == "colorScheme"]`
@@ -89,8 +110,10 @@ const Menu = ({ open, setOpen }) => {
     <StyledMenu
       open={open}
       style={{ backgroundColor: `${color?.secondColor?.hex}` }}
-    >
-      <div style={{ height: "1.2rem" }}></div>
+    >      
+      <SPAN>
+      <StyledLogo src={urlFor(navigation.logo2).quality(60).auto('format').url()} />
+      </SPAN>
       {navigation
         ? navigation.menu.map((item, id) => (
             <NavLink

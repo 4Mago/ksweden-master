@@ -91,7 +91,7 @@ const PageContainer = styled(motion.div)`
   height: auto;
   width: 100%;
   box-sizing: border-box;
-  padding: 0 8%;
+  padding: 0 6%;
   line-height: 24px;
 `
 
