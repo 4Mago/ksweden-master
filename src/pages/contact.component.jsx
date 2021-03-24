@@ -204,6 +204,10 @@ const StyledLogo = styled.img`
     bottom: 45px;
   }
   @media screen and (max-width: 500px) {
+    width: 150px;
+    height: 156px;
+    bottom: -35px;
+    left: -30px;
   }
 
 `
