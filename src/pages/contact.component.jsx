@@ -179,12 +179,15 @@ const StyledLogo = styled.img`
   box-sizing: border-box;
   position: relative;
   bottom: 70px;
+  left: 200px;
   cursor: default;
   @media screen and (max-width: 1300px) {
     width: 265px;
+    left: 100px;
   }
   @media screen and (max-width: 1100px) {
     width: 245px;
+    left: 0;
   }
   @media screen and (max-width: 900px) {
     width: 225px;
