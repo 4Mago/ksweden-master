@@ -100,7 +100,7 @@ const HeaderImage = ({ slider }) => {
 	return (
 		<StyledHeaderImage>
 			<Thumbnail
-				style={{ backgroundImage: `url(${urlFor(slider.thumbnail).quality(60).auto('format').url()})` }}
+				style={{ backgroundImage: `url(${urlFor(slider.thumbnail).quality(80).auto('format').url()})` }}
 			/>
 			<Overlay />
 			<Title blocks={slider.heroText}></Title>
