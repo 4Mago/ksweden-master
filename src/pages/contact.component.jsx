@@ -214,6 +214,7 @@ const StyledLogo = styled.img`
 
 const A = styled.a`
   text-decoration: none;
+  cursor: pointer;
   color: #414141;
 `
 
