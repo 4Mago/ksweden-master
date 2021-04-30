@@ -7,11 +7,27 @@ import Header from './components/header/header.component.jsx'
 import Footer from './components/footer/footer-component.jsx'
 import sanityClient from './Client'
 import styled from 'styled-components'
+import ReactGA from 'react-ga'
+import CookieConsent from 'react-cookie-consent'
 
 const HomePage = lazy(() => import('./pages/home.component.jsx'))
 const Terms = lazy(() => import('./pages/terms.component.jsx'))
 
 function App() {
+
+	const [cookie, cookieTrigger] = useState(false)
+    useEffect(() => {
+      if (cookie) {
+        ReactGA.initialize("G-P9J2VV4MZK")
+        window.localStorage.setItem("cookieAccepted", true)
+        ReactGA.pageview(window.location.pathname + window.location.search)
+      }
+    }, [cookie])
+    useEffect(() => {
+      window.localStorage.cookieAccepted
+        ? cookieTrigger(true)
+        : cookieTrigger(false)
+    }, [])
 
 	const [home, setHome] = useState('')
 	const [about, setAbout] = useState('')
@@ -118,6 +134,26 @@ function App() {
 	`
 	return (
 		<div className="App">
+
+<CookieConsent
+        enableDeclineButton
+        disableStyles={true}
+        flipButtons
+        declineButtonClasses="decline-button"
+        buttonClasses="cookie-button"
+        buttonText={"Acceptera"}
+        declineButtonText={"Nej Tack"}
+        containerClasses="cookie-container"
+        onAccept={() => cookieTrigger(true)}
+      >
+        Den här webbplatsen använder cookies, som samlar information om hur du
+        interagerar med sidan. Genom att acceptera tillåter du att vi samlar och
+        behandlar dina personuppgifter enligt vår{" "}
+        <Link style={{ color: "white" }} to="./integritets-policy">
+          integritetspolicy
+        </Link>
+      </CookieConsent>
+
 			<ThemeProvider theme={theme}>
 				<Header />
 				<Suspense
