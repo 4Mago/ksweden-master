@@ -96,34 +96,7 @@ function App() {
 			setTeam(teamArray)
 		})
 
-		//   sanityClient.fetch(rollQuery).then((roller) => {
-		//     roller.forEach((roll) => {
-		//       setRoller(roll)
-		//     })
-		//   })
-
-		//   const uppdragArray = []
-
-		//   sanityClient.fetch(uppdragQuery).then((uppdrag) => {
-		//     uppdrag.forEach((uppdrag) => {
-		//       uppdragArray.push(uppdrag)
-		//     })
-		//     setNyheter(uppdragArray)
-		//   })
-
-		//   const konsultArray = []
-		//   sanityClient.fetch(konsultQuery).then((konsult) => {
-		//     konsult.forEach((konsult) => {
-		//       konsultArray.push(konsult)
-		//     })
-		//     setKonsult(konsultArray)
-		//   })
-		//   return
 	}, [])
-
-	// const [loading, setLoading] = useState(false)
-	// setLoading(true)
-	// setLoading(false)
 
 	const Fallback = styled.div`
 		display: flex;
